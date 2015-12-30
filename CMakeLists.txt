@@ -71,3 +71,22 @@ include(SRPlanBlockPlatformCheck)
 include(TestBigEndian)
 test_big_endian(CMAKE_WORDS_BIGENDIAN)
 
+
+
+#-----------------------------------------------------------------------------
+# Dependence Libs
+#-----------------------------------------------------------------------------
+
+#include(SRPlanVTKSetup)
+
+
+
+
+#-----------------------------------------------------------------------------
+# Subdirectories
+#-----------------------------------------------------------------------------
+
+add_subdirectory(Libs)
+#add_subdirectory(Base)
+#add_subdirectory(Resources)
+

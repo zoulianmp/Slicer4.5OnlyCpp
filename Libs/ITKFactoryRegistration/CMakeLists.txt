@@ -29,7 +29,7 @@ set(ITK_IO_MODULES_USED
   ITKIOTransformMatlab
   MGHIO
   )
-if(Slicer_BUILD_DICOM_SUPPORT)
+if(SRPlan_BUILD_DICOM_SUPPORT)
   list(APPEND ITK_IO_MODULES_USED ITKIODCMTK)
 endif()
 
@@ -40,7 +40,7 @@ set(${PROJECT_NAME}_ITK_COMPONENTS
   )
 find_package(ITK 4.6 COMPONENTS ${${PROJECT_NAME}_ITK_COMPONENTS} REQUIRED)
 
-# This is the Slicer library in charge of registering the default ITK factories.
+# This is the SRPlan library in charge of registering the default ITK factories.
 set(ITK_NO_IO_FACTORY_REGISTER_MANAGER 0)
 
 include(${ITK_USE_FILE})
@@ -96,8 +96,8 @@ set(libs
 target_link_libraries(${lib_name} ${libs})
 
 # Apply user-defined properties to the library target.
-if(Slicer_LIBRARY_PROPERTIES)
-  set_target_properties(${lib_name} PROPERTIES ${Slicer_LIBRARY_PROPERTIES})
+if(SRPlan_LIBRARY_PROPERTIES)
+  set_target_properties(${lib_name} PROPERTIES ${SRPlan_LIBRARY_PROPERTIES})
 endif()
 
 # --------------------------------------------------------------------------

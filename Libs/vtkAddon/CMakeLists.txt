@@ -97,8 +97,8 @@ set(libs
 target_link_libraries(${lib_name} ${libs})
 
 # Apply user-defined properties to the library target.
-if(Slicer_LIBRARY_PROPERTIES)
-  set_target_properties(${lib_name} PROPERTIES ${Slicer_LIBRARY_PROPERTIES})
+if(SRPlan_LIBRARY_PROPERTIES)
+  set_target_properties(${lib_name} PROPERTIES ${SRPlan_LIBRARY_PROPERTIES})
 endif()
 
 # --------------------------------------------------------------------------
@@ -135,33 +135,6 @@ install(TARGETS ${lib_name}
   ARCHIVE DESTINATION ${${PROJECT_NAME}_INSTALL_LIB_DIR} COMPONENT Development
   )
 
-# --------------------------------------------------------------------------
-# Python Wrapping
-# --------------------------------------------------------------------------
-if(VTK_WRAP_PYTHON)
-  include(vtkMacroKitPythonWrap)
-
-  vtkMacroKitPythonWrap(
-    KIT_NAME ${lib_name}
-    KIT_SRCS ${vtkAddon_SRCS}
-    KIT_INSTALL_BIN_DIR ${${PROJECT_NAME}_INSTALL_BIN_DIR}
-    KIT_INSTALL_LIB_DIR ${${PROJECT_NAME}_INSTALL_LIB_DIR}
-    )
-  # Export target
-  export(TARGETS ${lib_name}Python ${lib_name}PythonD APPEND FILE ${${PROJECT_NAME}_EXPORT_FILE})
-  # Folder
-  if(NOT "${${PROJECT_NAME}_FOLDER}" STREQUAL "")
-    set_target_properties(${lib_name}Python PROPERTIES FOLDER ${${PROJECT_NAME}_FOLDER})
-    set_target_properties(${lib_name}PythonD PROPERTIES FOLDER ${${PROJECT_NAME}_FOLDER})
-  endif()
-endif()
-
-# --------------------------------------------------------------------------
-# Testing (requires some of the examples)
-# --------------------------------------------------------------------------
-if(BUILD_TESTING)
-  add_subdirectory(Testing)
-endif()
 
 # --------------------------------------------------------------------------
 # Set INCLUDE_DIRS variable
