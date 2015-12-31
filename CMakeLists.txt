@@ -5,7 +5,9 @@ cmake_policy(SET CMP0048 NEW)
 
 
 #-----------------------------------------------------------------------------
-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake" ${CMAKE_MODULE_PATH})
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake" 
+                       ${CMAKE_CURRENT_SOURCE_DIR}/CMake/CTK-CMake
+					   ${CMAKE_MODULE_PATH})
 
 
 #-----------------------------------------------------------------------------
@@ -73,13 +75,26 @@ test_big_endian(CMAKE_WORDS_BIGENDIAN)
 
 
 
+
+
+#-----------------------------------------------------------------------------
+# General SRPlan Options
+#-----------------------------------------------------------------------------
+include(CMakeDependentOption)
+
+
+
+option(SRPlan_BUILD_DICOM_SUPPORT "Build SRPlan with DICOM support" ON)
+
+
+
 #-----------------------------------------------------------------------------
 # Dependence Libs
 #-----------------------------------------------------------------------------
 
-#include(SRPlanVTKSetup)
+include(SRPlanQtSetup)
 
-
+include(SRPlanVTKSetup)
 
 
 #-----------------------------------------------------------------------------

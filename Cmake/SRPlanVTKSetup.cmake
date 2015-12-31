@@ -31,7 +31,7 @@ set_property(CACHE SRPlan_VTK_RENDERING_BACKEND PROPERTY STRINGS "OpenGL" "OpenG
 
 set(SRPlan_VTK_RENDERING_USE_${SRPlan_VTK_RENDERING_BACKEND}_BACKEND 1)
 
-set(Slicer_VTK_COMPONENTS
+set(SRPlan_VTK_COMPONENTS
   vtkFiltersExtraction
   vtkFiltersFlowPaths
   vtkFiltersGeometry
@@ -60,12 +60,12 @@ set(Slicer_VTK_COMPONENTS
 
 
 
-find_package(VTK 6.3 COMPONENTS ${Slicer_VTK_COMPONENTS} REQUIRED NO_MODULE)
+find_package(VTK 6.3 COMPONENTS ${SRPlan_VTK_COMPONENTS} REQUIRED NO_MODULE)
 if(NOT TARGET vtkGUISupportQt)
   message(FATAL_ERROR "error: VTK was not configured to use QT, you probably need "
                     "to recompile it with VTK_USE_GUISUPPORT ON, VTK_Group_Qt ON, "
                     "DESIRED_QT_VERSION 4 and QT_QMAKE_EXECUTABLE set appropriatly. "
-                    "Note that Qt >= ${Slicer_REQUIRED_QT_VERSION} is *required*")
+                    "Note that Qt >= ${SRPlan_REQUIRED_QT_VERSION} is *required*")
 endif()
 include(${VTK_USE_FILE})
 if(NOT DEFINED VTK_RENDERING_BACKEND)
