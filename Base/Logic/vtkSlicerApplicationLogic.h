@@ -44,6 +44,8 @@ class ReadDataRequest;
 class WriteDataQueue;
 class WriteDataRequest;
 
+//VTK_Slicer_BASE_LOGIC_EXPORT
+
 class VTK_SLICER_BASE_LOGIC_EXPORT vtkSlicerApplicationLogic
   : public vtkMRMLApplicationLogic
 {

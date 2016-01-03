@@ -146,6 +146,10 @@ set(libs
   ${VTK_LIBRARIES}
   )
 
+
+  message("SRPlanBaseLogic target libs ${libs}")
+
+
 # Archive support used by extensions and by SRPlan data bundle
 list(APPEND libs
   ${LibArchive_LIBRARY}
