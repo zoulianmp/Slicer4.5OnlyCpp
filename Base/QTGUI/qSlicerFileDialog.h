@@ -32,7 +32,7 @@ class QDropEvent;
 
 // SlicerQt includes
 #include "qSlicerIO.h"
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 /// Forward declarations
 class qSlicerIOManager;
@@ -40,7 +40,7 @@ class qSlicerIOManager;
 class qSlicerIOOptions;
 
 //------------------------------------------------------------------------------
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerFileDialog : public QObject
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerFileDialog : public QObject
 {
   Q_OBJECT
   Q_ENUMS(IOAction)
@@ -102,7 +102,7 @@ class qSlicerStandardFileDialogPrivate;
 class ctkFileDialog;
 
 //------------------------------------------------------------------------------
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerStandardFileDialog
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerStandardFileDialog
 : public qSlicerFileDialog
 {
   Q_OBJECT

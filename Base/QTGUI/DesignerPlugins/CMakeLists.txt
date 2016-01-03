@@ -6,7 +6,7 @@ project(${KIT})
 #
 
 # The header '${KIT}Export.h' will be automatically configured.
-set(${KIT}_EXPORT "Q_SLICER_DESIGNER_PLUGINS_EXPORT")
+set(${KIT}_EXPORT "Q_SRPLAN_DESIGNER_PLUGINS_EXPORT")
 
 # Source files
 set(${KIT}_SRCS
@@ -37,7 +37,7 @@ set(${KIT}_MOC_SRCS
   )
 
 set(${KIT}_TARGET_LIBRARIES
-  qSlicerBaseQTGUI
+  qSRPlanBaseQTGUI
   )
 if(Slicer_BUILD_CLI_SUPPORT)
   list(APPEND ${KIT}_TARGET_LIBRARIES

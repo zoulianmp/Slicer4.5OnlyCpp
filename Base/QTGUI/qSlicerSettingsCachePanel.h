@@ -29,12 +29,12 @@
 #include <ctkVTKObject.h>
 
 // QtGUI includes
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 class qSlicerSettingsCachePanelPrivate;
 class vtkCacheManager;
 
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerSettingsCachePanel
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerSettingsCachePanel
   : public ctkSettingsPanel
 {
   Q_OBJECT

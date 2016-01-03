@@ -25,14 +25,14 @@
 #include <QListView>
 
 // QtGUI includes
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 class qSlicerModulesListViewPrivate;
 class qSlicerModuleFactoryFilterModel;
 class qSlicerAbstractModuleFactoryManager;
 class QStandardItem;
 
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerModulesListView : public QListView
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerModulesListView : public QListView
 {
   Q_OBJECT
   /// False by default

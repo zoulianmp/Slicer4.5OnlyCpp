@@ -24,7 +24,7 @@
 #include <QFile>
 #include <QMainWindow>
 
-#include "vtkSlicerConfigure.h" // For Slicer_USE_*, Slicer_BUILD_*_SUPPORT
+#include "vtkSRPlanConfigure.h" // For Slicer_USE_*, Slicer_BUILD_*_SUPPORT
 
 // CTK includes
 #include <ctkColorDialog.h>
@@ -35,7 +35,7 @@
 #include <ctkITKErrorLogMessageHandler.h>
 #include <ctkMessageBox.h>
 #include <ctkSettings.h>
-#ifdef Slicer_USE_QtTesting
+#ifdef SRPlan_USE_QtTesting
 #include <ctkQtTestingUtility.h>
 #include <ctkXMLEventObserver.h>
 #include <ctkXMLEventSource.h>
@@ -52,16 +52,16 @@
 #include "qSlicerLayoutManager.h"
 #include "qSlicerModuleFactoryManager.h"
 #include "qSlicerModuleManager.h"
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
 # include "qSlicerPythonManager.h"
 #endif
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
 # include "qSlicerExtensionsManagerDialog.h"
 # include "qSlicerSettingsExtensionsPanel.h"
 #endif
 #include "qSlicerSettingsCachePanel.h"
 #include "qSlicerSettingsGeneralPanel.h"
-#ifdef Slicer_BUILD_I18N_SUPPORT
+#ifdef SRPlan_BUILD_I18N_SUPPORT
 # include "qSlicerSettingsInternationalizationPanel.h"
 #endif
 #include "qSlicerSettingsModulesPanel.h"
@@ -73,7 +73,7 @@
 #include "qMRMLEventBrokerConnection.h"
 
 // qMRML includes
-#ifdef Slicer_USE_QtTesting
+#ifdef SRPlan_USE_QtTesting
 #include <qMRMLCheckableNodeComboBoxEventPlayer.h>
 #include <qMRMLNodeComboBoxEventPlayer.h>
 #include <qMRMLNodeComboBoxEventTranslator.h>
@@ -120,10 +120,10 @@ public:
   QWeakPointer<qSlicerLayoutManager> LayoutManager;
   ctkToolTipTrapper*      ToolTipTrapper;
   ctkSettingsDialog*      SettingsDialog;
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
   qSlicerExtensionsManagerDialog* ExtensionsManagerDialog;
 #endif
-#ifdef Slicer_USE_QtTesting
+#ifdef SRPlan_USE_QtTesting
   ctkQtTestingUtility*    TestingUtility;
 #endif
 };
@@ -141,7 +141,7 @@ qSlicerApplicationPrivate::qSlicerApplicationPrivate(
 {
   this->ToolTipTrapper = 0;
   this->SettingsDialog = 0;
-#ifdef Slicer_USE_QtTesting
+#ifdef SRPlan_USE_QtTesting
   this->TestingUtility = 0;
 #endif
 }
@@ -151,11 +151,11 @@ qSlicerApplicationPrivate::~qSlicerApplicationPrivate()
 {
   delete this->SettingsDialog;
   this->SettingsDialog = 0;
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
   delete this->ExtensionsManagerDialog;
   this->ExtensionsManagerDialog =0;
 #endif
-#ifdef Slicer_USE_QtTesting
+#ifdef SRPlan_USE_QtTesting
   delete this->TestingUtility;
   this->TestingUtility = 0;
 #endif
@@ -168,7 +168,7 @@ void qSlicerApplicationPrivate::init()
 
   ctkVTKConnectionFactory::setInstance(new qMRMLConnectionFactory);
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   if (!qSlicerCoreApplication::testAttribute(qSlicerCoreApplication::AA_DisablePython))
     {
     // Note: qSlicerCoreApplication class takes ownership of the pythonManager and
@@ -233,7 +233,7 @@ void qSlicerApplicationPrivate::init()
     new qSlicerSettingsViewsPanel(generalPanel);
   this->SettingsDialog->addPanel("Views", settingsViewsPanel);
 
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
   qSlicerSettingsExtensionsPanel * settingsExtensionsPanel = new qSlicerSettingsExtensionsPanel;
   this->SettingsDialog->addPanel("Extensions", settingsExtensionsPanel);
 #endif
@@ -241,7 +241,7 @@ void qSlicerApplicationPrivate::init()
   cachePanel->setCacheManager(this->MRMLScene->GetCacheManager());
   this->SettingsDialog->addPanel("Cache", cachePanel);
 
-#ifdef Slicer_BUILD_I18N_SUPPORT
+#ifdef SRPlan_BUILD_I18N_SUPPORT
   qSlicerSettingsInternationalizationPanel* qtInternationalizationPanel =
       new qSlicerSettingsInternationalizationPanel;
   this->SettingsDialog->addPanel("Internationalization", qtInternationalizationPanel);
@@ -256,14 +256,14 @@ void qSlicerApplicationPrivate::init()
   //----------------------------------------------------------------------------
   // Dialogs
   //----------------------------------------------------------------------------
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
   this->ExtensionsManagerDialog = new qSlicerExtensionsManagerDialog(0);
 #endif
 
   //----------------------------------------------------------------------------
   // Test Utility
   //----------------------------------------------------------------------------
-#ifdef Slicer_USE_QtTesting
+#ifdef SRPlan_USE_QtTesting
   this->TestingUtility = new ctkQtTestingUtility(0);
   this->TestingUtility->addEventObserver(
       "xml", new ctkXMLEventObserver(this->TestingUtility));
@@ -382,7 +382,7 @@ qSlicerIOManager* qSlicerApplication::ioManager()
   return _ioManager;
 }
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
 //-----------------------------------------------------------------------------
 qSlicerPythonManager* qSlicerApplication::pythonManager()
 {
@@ -397,7 +397,7 @@ qSlicerPythonManager* qSlicerApplication::pythonManager()
 }
 #endif
 
-#ifdef Slicer_USE_QtTesting
+#ifdef SRPlan_USE_QtTesting
 //-----------------------------------------------------------------------------
 ctkQtTestingUtility* qSlicerApplication::testingUtility()
 {
@@ -597,7 +597,7 @@ ctkSettingsDialog* qSlicerApplication::settingsDialog()const
 }
 
 // --------------------------------------------------------------------------
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
 void qSlicerApplication::openExtensionsManagerDialog()
 {
   Q_D(qSlicerApplication);
@@ -749,7 +749,7 @@ void qSlicerApplication::displayApplicationInformations() const
   // Slicer version
   qDebug("%s: %s (revision %s) %s - %s",
          qPrintable(titles.at(1).leftJustified(titleWidth, '.')),
-         Slicer_VERSION_FULL, qPrintable(this->repositoryRevision()),
+         SRPlan_VERSION_FULL, qPrintable(this->repositoryRevision()),
          qPrintable(this->platform()),
          this->isInstalled() ? "installed" : "not installed");
 

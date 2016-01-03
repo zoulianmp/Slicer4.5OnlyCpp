@@ -32,27 +32,27 @@
 #include "qSlicerCoreApplication.h"
 
 // QTGUI includes
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 class QMainWindow;
 class qSlicerApplicationPrivate;
 class qSlicerCommandOptions;
 class qSlicerIOManager;
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
 class qSlicerPythonManager;
 #endif
 class qSlicerLayoutManager;
 class qSlicerWidget;
 
 class ctkErrorLogModel;
-#ifdef Slicer_USE_QtTesting
+#ifdef SRPlan_USE_QtTesting
 class ctkQtTestingUtility;
 #endif
 
 // MRML includes
 class vtkMRMLNode;
 
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerApplication : public qSlicerCoreApplication
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerApplication : public qSlicerCoreApplication
 {
   Q_OBJECT
 public:
@@ -86,12 +86,12 @@ public:
   /// Get IO Manager
   Q_INVOKABLE qSlicerIOManager* ioManager();
 
-  #ifdef Slicer_USE_PYTHONQT
+  #ifdef SRPlan_USE_PYTHONQT
   /// Get Python Manager
   Q_INVOKABLE qSlicerPythonManager * pythonManager();
   #endif
 
-  #ifdef Slicer_USE_QtTesting
+  #ifdef SRPlan_USE_QtTesting
   /// Get test utility
   Q_INVOKABLE ctkQtTestingUtility* testingUtility();
   #endif
@@ -145,7 +145,7 @@ public slots:
   /// If no \a reason is given, the text will default to ""Are you sure you want to restart?"
   void confirmRestart(QString reason = QString());
 
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
   void openExtensionsManagerDialog();
 #endif
 
@@ -177,6 +177,6 @@ private:
 /// Apply the Slicer palette to the \c palette
 /// Note also that the palette parameter is passed by reference and will be
 /// updated using the native paletter and applying Slicer specific properties.
-void  Q_SLICER_BASE_QTGUI_EXPORT qSlicerApplyPalette(QPalette& palette);
+void  Q_SRPlan_BASE_QTGUI_EXPORT qSlicerApplyPalette(QPalette& palette);
 
 #endif

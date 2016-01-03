@@ -38,7 +38,7 @@
 #include <QSharedPointer>
 
 // SlicerQt includes
-#include "qSlicerBaseQTCoreExport.h"
+#include "qSRplanBaseQTCoreExport.h"
 #include "qSlicerCoreApplication.h"
 
 // VTK includes
@@ -49,7 +49,7 @@ class vtkDataIOManagerLogic;
 class vtkMRMLRemoteIOLogic;
 
 //-----------------------------------------------------------------------------
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerCoreApplicationPrivate
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerCoreApplicationPrivate
 {
   Q_DECLARE_PUBLIC(qSlicerCoreApplication);
 protected:
@@ -82,7 +82,7 @@ public:
   /// Set environment variable
   void setEnvironmentVariable(const QString& key, const QString& value);
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   void setPythonOsEnviron(const QString& key, const QString& value);
 #endif
 
@@ -108,7 +108,7 @@ public:
   /// Set TCL_LIBRARY, TK_LIBRARY and TCLLIBPATH environment variable is not already set.
   void setTclEnvironmentVariables();
 
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
   QString defaultExtensionsInstallPathForMacOSX()const;
 #endif
 
@@ -151,12 +151,12 @@ public:
   /// ReturnCode flag
   int                                         ReturnCode;
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   /// CorePythonManager - It should exist only one instance of the CorePythonManager
   QSharedPointer<qSlicerCorePythonManager>    CorePythonManager;
 #endif
 
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
   QSharedPointer<qSlicerExtensionsManagerModel> ExtensionsManagerModel;
 #endif
 
@@ -166,7 +166,7 @@ public:
   QHash<QString, QString>                     EnvironmentVariablesCache;
 #endif
 
-#ifdef Slicer_BUILD_DICOM_SUPPORT
+#ifdef SRPlan_BUILD_DICOM_SUPPORT
   /// Application-wide database instance
   ctkDICOMDatabase*                           DICOMDatabase;
 #endif

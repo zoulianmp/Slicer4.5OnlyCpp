@@ -27,7 +27,7 @@
 // SlicerQt includes
 #include "qSlicerObject.h"
 
-#include "qSlicerBaseQTCoreExport.h"
+#include "qSRplanBaseQTCoreExport.h"
 
 /// class vtkSlicerApplicationLogic;
 class vtkMRMLAbstractLogic;
@@ -35,7 +35,7 @@ class qSlicerAbstractCoreModule;
 class QAction;
 class qSlicerAbstractModuleRepresentationPrivate;
 
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerAbstractModuleRepresentation : virtual public qSlicerObject
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerAbstractModuleRepresentation : virtual public qSlicerObject
 {
 public:
 

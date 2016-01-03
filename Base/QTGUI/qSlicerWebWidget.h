@@ -26,9 +26,9 @@
 #include <QWidget>
 
 // QtGUI includes
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
-#include "vtkSlicerConfigure.h" // For Slicer_USE_PYTHONQT_WITH_OPENSSL
+#include "vtkSRPlanConfigure.h" // For Slicer_USE_PYTHONQT_WITH_OPENSSL
 
 class QNetworkReply;
 class qSlicerWebWidgetPrivate;
@@ -39,7 +39,7 @@ class QWebView;
 struct QSslError{};
 #endif
 
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerWebWidget
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerWebWidget
   : public QWidget
 {
   Q_OBJECT

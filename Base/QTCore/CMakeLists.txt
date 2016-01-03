@@ -1,21 +1,14 @@
-project(qSlicerBaseQTCore)
+project(qSRPlanBaseQTCore)
 
 #
 # Dependencies
 #
 
 #
-# DCMTK
-#
-if(Slicer_BUILD_DICOM_SUPPORT)
-  find_package(DCMTK REQUIRED)
-endif()
-
-#
 # ModuleDescriptionParser - Required to define ModuleDescriptionParser_INCLUDE_DIRS
 #
-if(Slicer_BUILD_CLI_SUPPORT)
-  find_package(SlicerExecutionModel REQUIRED ModuleDescriptionParser)
+if(SRPlan_BUILD_CLI_SUPPORT)
+  find_package(SRPlanExecutionModel REQUIRED ModuleDescriptionParser)
 
   #
   # ITK
@@ -34,25 +27,25 @@ endif()
 #
 # qRestAPI
 #
-if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
+if(SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT)
   find_package(qRestAPI REQUIRED)
   include(${qRestAPI_USE_FILE})
 endif()
 
 #
-# See CMake/SlicerMacroBuildBaseQtLibrary.cmake for details
+# See CMake/SRPlanMacroBuildBaseQtLibrary.cmake for details
 #
 
-set(KIT_export_directive "Q_SLICER_BASE_QTCORE_EXPORT")
+set(KIT_export_directive "Q_SRPlan_BASE_QTCORE_EXPORT")
 
 # Additional directories to include
 set(KIT_include_directories
   ${MRMLLogic_INCLUDE_DIRS}
   ${MRMLDisplayableManager_INCLUDE_DIRS}
-  ${FreeSurfer_INCLUDE_DIRS} # for qSlicerXcedeCatalogReader
+  ${FreeSurfer_INCLUDE_DIRS} # for qSRPlanXcedeCatalogReader
   )
 
-if(Slicer_BUILD_CLI_SUPPORT)
+if(SRPlan_BUILD_CLI_SUPPORT)
   list(APPEND KIT_include_directories
     ${ModuleDescriptionParser_INCLUDE_DIRS}
     ${MRMLCLI_INCLUDE_DIRS}
@@ -103,7 +96,7 @@ set(KIT_SRCS
   qSlicerXcedeCatalogReader.h
   )
 
-if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
+if(SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT)
   list(APPEND KIT_SRCS
     qSlicerExtensionDownloadTask.cxx
     qSlicerExtensionDownloadTask.h
@@ -112,7 +105,7 @@ if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
     )
 endif()
 
-if(Slicer_USE_PYTHONQT)
+if(SRPlan_USE_PYTHONQT)
   list(APPEND KIT_SRCS
     qSlicerScriptedFileWriter.cxx
     qSlicerScriptedFileWriter.h
@@ -146,14 +139,14 @@ set(KIT_MOC_SRCS
   qSlicerXcedeCatalogReader.h
   )
 
-if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
+if(SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT)
   list(APPEND KIT_MOC_SRCS
     qSlicerExtensionDownloadTask.h
     qSlicerExtensionsManagerModel.h
     )
 endif()
 
-if(Slicer_USE_PYTHONQT)
+if(SRPlan_USE_PYTHONQT)
   list(APPEND KIT_MOC_SRCS
     qSlicerScriptedFileWriter.h
     )
@@ -161,7 +154,7 @@ endif()
 
 # Additional Target libraries (QT libs already included)
 set(KIT_target_libraries
-  SlicerBaseLogic
+  SRPlanBaseLogic
   MRMLDisplayableManager
   CTKCore
   CTKImageProcessingITKCore
@@ -169,20 +162,20 @@ set(KIT_target_libraries
   ${ITK_LIBRARIES}
   )
 
-if(Slicer_BUILD_DICOM_SUPPORT)
+if(SRPlan_BUILD_DICOM_SUPPORT)
   list(APPEND KIT_target_libraries
     ${DCMTK_LIBRARIES}
     CTKDICOMCore
     )
 endif()
 
-if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
+if(SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT)
   list(APPEND KIT_target_libraries
     qRestAPI
     )
 endif()
 
-if(Slicer_BUILD_CLI_SUPPORT)
+if(SRPlan_BUILD_CLI_SUPPORT)
   list(APPEND KIT_target_libraries
     ${ITK_LIBRARIES}
     ModuleDescriptionParser
@@ -198,7 +191,7 @@ if(APPLE)
   set(QT_CONF_FILEPATH "${CMAKE_CURRENT_BINARY_DIR}/Resources/qt.conf")
   file(WRITE ${QT_CONF_FILEPATH}
 "[Paths]
-Plugins = ${Slicer_QtPlugins_DIR}
+Plugins = ${SRPlan_QtPlugins_DIR}
 ")
 
   configure_file(
@@ -212,7 +205,7 @@ Plugins = ${Slicer_QtPlugins_DIR}
 endif()
 
 # Python wrap
-if(Slicer_USE_PYTHONQT)
+if(SRPlan_USE_PYTHONQT)
   set(VTK_COMMON_PYTHON_LIBRARY
     vtkWrappingPythonCore # For vtkPythonUtil
     )
@@ -239,9 +232,9 @@ if(Slicer_USE_PYTHONQT)
     qSlicerCorePythonManager.h
     )
 
-endif(Slicer_USE_PYTHONQT)
+endif(SRPlan_USE_PYTHONQT)
 
-SlicerMacroBuildBaseQtLibrary(
+SRPlanMacroBuildBaseQtLibrary(
   NAME ${PROJECT_NAME}
   EXPORT_DIRECTIVE ${KIT_export_directive}
   INCLUDE_DIRECTORIES ${KIT_include_directories}
@@ -252,7 +245,7 @@ SlicerMacroBuildBaseQtLibrary(
   WRAP_PYTHONQT
   )
 
-if(Slicer_USE_PYTHONQT_WITH_OPENSSL)
+if(SRPlan_USE_PYTHONQT_WITH_OPENSSL)
   configure_file(
     Resources/Certs/Slicer.crt
     ${Slicer_BINARY_DIR}/${Slicer_SHARE_DIR}/Slicer.crt
@@ -268,8 +261,8 @@ endif()
 #add_subdirectory(Plugins)
 
 # Testing
-# Note: Within both Testing/Cxx and Testing/Python, some code is useful to both Slicer and the
+# Note: Within both Testing/Cxx and Testing/Python, some code is useful to both SRPlan and the
 #       Extensions. For that reason, the Testing directory is added inconditionnally.
-#       The code specific to Slicer will be excluded directly in either Testing/Python
+#       The code specific to SRPlan will be excluded directly in either Testing/Python
 #       or Testing/Cxx.
 add_subdirectory(Testing)

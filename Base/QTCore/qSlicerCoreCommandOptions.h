@@ -24,13 +24,13 @@
 // CTK includes
 #include <ctkCommandLineParser.h>
 
-#include "qSlicerBaseQTCoreExport.h"
-#include "vtkSlicerConfigure.h" // For Slicer_USE_PYTHONQT, Slicer_BUILD_WIN32_CONSOLE
+#include "qSRplanBaseQTCoreExport.h"
+#include "vtkSRPlanConfigure.h" // For Slicer_USE_PYTHONQT, Slicer_BUILD_WIN32_CONSOLE
 
 class QSettings;
 class qSlicerCoreCommandOptionsPrivate;
 
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerCoreCommandOptions : public ctkCommandLineParser
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerCoreCommandOptions : public ctkCommandLineParser
 {
   Q_OBJECT
   Q_PROPERTY(bool displayHelpAndExit READ displayHelpAndExit CONSTANT)
@@ -54,7 +54,7 @@ class Q_SLICER_BASE_QTCORE_EXPORT qSlicerCoreCommandOptions : public ctkCommandL
   Q_PROPERTY(bool verboseModuleDiscovery READ verboseModuleDiscovery CONSTANT)
   Q_PROPERTY(bool disableMessageHandlers READ disableMessageHandlers CONSTANT)
   Q_PROPERTY(bool testingEnabled READ isTestingEnabled CONSTANT)
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   Q_PROPERTY(bool pythonDisabled READ isPythonDisabled CONSTANT)
 #endif
   Q_PROPERTY(QStringList additonalModulePaths READ additonalModulePaths CONSTANT)
@@ -173,7 +173,7 @@ public:
   /// \sa settingsEnabled()
   bool isTestingEnabled()const;
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   /// Return True if slicer has no python infrastructure initialized.
   /// Python is still compiled with the app, but not enabled at run-time.
   /// \sa settingsEnabled()

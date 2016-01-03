@@ -27,12 +27,12 @@
 // SlicerQt includes
 #include "qSlicerAbstractModule.h"
 
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 class qSlicerLoadableModulePrivate;
 class qSlicerCorePythonManager;
 
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerLoadableModule : public qSlicerAbstractModule
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerLoadableModule : public qSlicerAbstractModule
 {
   Q_OBJECT
 

@@ -30,13 +30,13 @@
 #include <QVariant>
 
 // QtCore includes
-#include "qSlicerBaseQTCoreExport.h"
+#include "qSRplanBaseQTCoreExport.h"
 #include "qSlicerObject.h"
 
 class qSlicerIOOptions;
 
 /// Base class for qSlicerFileReader and qSlicerFileWriter
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerIO
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerIO
   : public QObject
   , public qSlicerObject
 {

@@ -9,13 +9,13 @@
 // Slicer includes
 #include "vtkSlicerApplicationLogic.h"
 #include "vtkMRMLColorLogic.h"
-#include "vtkSlicerConfigure.h" // For Slicer_BUILD_CLI_SUPPORT
+#include "vtkSRPlanConfigure.h" // For Slicer_BUILD_CLI_SUPPORT
 #include "vtkSlicerTask.h"
 
 // MRML includes
 #include <vtkCacheManager.h>
 #include <vtkDataIOManagerLogic.h>
-#ifdef Slicer_BUILD_CLI_SUPPORT
+#ifdef SRPlan_BUILD_CLI_SUPPORT
 # include <vtkMRMLCommandLineModuleNode.h>
 #endif
 #include <vtkMRMLDisplayNode.h>
@@ -863,7 +863,7 @@ void vtkSlicerApplicationLogic::ProcessReadNodeData(ReadDataRequest& req)
   vtkDebugMacro("ProcessReadNodeData: read data request node id = " << nd->GetID());
 
   vtkSmartPointer<vtkMRMLStorageNode> storageNode;
-#ifdef Slicer_BUILD_CLI_SUPPORT
+#ifdef SRPlan_BUILD_CLI_SUPPORT
   vtkMRMLCommandLineModuleNode *clp = clp = vtkMRMLCommandLineModuleNode::SafeDownCast(nd);
 #endif
 
@@ -991,7 +991,7 @@ void vtkSlicerApplicationLogic::ProcessReadNodeData(ReadDataRequest& req)
         }
       }
     }
-#ifdef Slicer_BUILD_CLI_SUPPORT
+#ifdef SRPlan_BUILD_CLI_SUPPORT
     // if the node was a CommandLineModule node, then read the file
     // (no storage node for these, yet)
     if (clp)
@@ -1379,7 +1379,7 @@ bool vtkSlicerApplicationLogic::IsEmbeddedModule(const std::string& filePath,
     }
   std::string extensionPath = itksys::SystemTools::GetFilenamePath(filePath);
   bool isEmbedded = itksys::SystemTools::StringStartsWith(extensionPath.c_str(), applicationHomeDir.c_str());
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
   // On MacOSX extensions are installed in the "<Slicer_EXTENSIONS_DIRBASENAME>-<slicerRevision>"
   // folder being a sub directory of the application dir, an extra test is required to make sure the
   // tested filePath doesn't belong to that "<Slicer_EXTENSIONS_DIRBASENAME>-<slicerRevision>" folder.
@@ -1460,7 +1460,7 @@ bool vtkSlicerApplicationLogic::IsPluginBuiltIn(const std::string& filePath,
   bool isBuiltIn = itksys::SystemTools::StringStartsWith(
         canonicalPath.c_str(), canonicalApplicationHomeDir.c_str());
 
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
   // On MacOSX extensions are installed in the "<Slicer_EXTENSIONS_DIRBASENAME>-<slicerRevision>"
   // folder being a sub directory of the application dir, an extra test is required to make sure the
   // tested filePath doesn't belong to that "<Slicer_EXTENSIONS_DIRBASENAME>-<slicerRevision>" folder.

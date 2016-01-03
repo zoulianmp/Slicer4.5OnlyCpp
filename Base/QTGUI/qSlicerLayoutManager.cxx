@@ -31,7 +31,7 @@
 // SlicerQt includes
 #include "qSlicerLayoutManager.h"
 #include "qSlicerApplication.h"
-#ifdef Slicer_USE_PYTHONQT_WITH_TCL
+#ifdef SRPlan_USE_PYTHONQT_WITH_TCL
 #include "qSlicerPythonManager.h"
 #endif
 
@@ -79,7 +79,7 @@ qSlicerLayoutManager::qSlicerLayoutManager(QWidget* widget)
 void qSlicerLayoutManager::setScriptedDisplayableManagerDirectory(
   const QString& scriptedDisplayableManagerDirectory)
 {
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   if (qSlicerCoreApplication::testAttribute(
         qSlicerCoreApplication::AA_DisablePython))
     {

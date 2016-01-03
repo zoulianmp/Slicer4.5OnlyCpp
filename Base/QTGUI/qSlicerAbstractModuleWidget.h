@@ -36,7 +36,7 @@ class qSlicerAbstractModuleWidgetPrivate;
 ///
 /// Base class of all the Slicer module widgets. The widget is added in the module panels.
 /// Deriving from qSlicerWidget, it inherits the mrmlScene()/setMRMLScene() methods.
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerAbstractModuleWidget
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerAbstractModuleWidget
   :public qSlicerWidget, public qSlicerAbstractModuleRepresentation
 {
   Q_OBJECT

@@ -86,6 +86,87 @@ include(CMakeDependentOption)
 
 option(SRPlan_BUILD_DICOM_SUPPORT "Build SRPlan with DICOM support" ON)
 
+option(SRPlan_BUILD_CLI_SUPPORT "Build SRPlan with DICOM support" OFF)
+
+
+
+
+
+#-----------------------------------------------------------------------------
+# General SRPlan Variables
+#-----------------------------------------------------------------------------
+
+set(SRPlan_CMAKE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake" )
+
+
+
+#-----------------------------------------------------------------------------
+# Install no development files by default, but allow the user to get
+# them installed by setting SRPlan_INSTALL_DEVELOPMENT to true.
+#-----------------------------------------------------------------------------
+#option(SRPlan_INSTALL_DEVELOPMENT "Install SRPlan extension development files." OFF)
+#mark_as_advanced(SRPlan_INSTALL_DEVELOPMENT)
+set(SRPlan_INSTALL_DEVELOPMENT OFF)
+if(NOT SRPlan_INSTALL_DEVELOPMENT)
+  set(SRPlan_INSTALL_NO_DEVELOPMENT 1)
+else()
+  set(SRPlan_INSTALL_NO_DEVELOPMENT 0)
+endif()
+
+
+#-----------------------------------------------------------------------------
+# SRPlan install directories
+#-----------------------------------------------------------------------------
+set(SRPlan_INSTALL_ROOT "CMAKE_INSTALL_PREFIX}/")
+set(SRPlan_BUNDLE_LOCATION "${SRPlan_MAIN_PROJECT_APPLICATION_NAME}.app/Contents")
+# NOTE: Make sure to update vtkSRPlanApplicationLogic::IsEmbeddedModule if
+#       the following variables are changed.
+set(SRPlan_EXTENSIONS_DIRBASENAME "Extensions")
+set(SRPlan_EXTENSIONS_DIRNAME "${SRPlan_EXTENSIONS_DIRBASENAME}-${SRPlan_WC_REVISION}")
+if(APPLE)
+  set(SRPlan_INSTALL_ROOT "${SRPlan_BUNDLE_LOCATION}/") # Set to create Bundle
+endif()
+
+set(SRPlan_INSTALL_BIN_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_BIN_DIR}")
+set(SRPlan_INSTALL_LIB_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_LIB_DIR}")
+set(SRPlan_INSTALL_INCLUDE_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_INCLUDE_DIR}")
+set(SRPlan_INSTALL_SHARE_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_SHARE_DIR}")
+set(SRPlan_INSTALL_LIBEXEC_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_LIBEXEC_DIR}")
+set(SRPlan_INSTALL_ITKFACTORIES_DIR "${SRPlan_INSTALL_LIB_DIR}/ITKFactories")
+set(SRPlan_INSTALL_QM_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_QM_DIR}")
+
+if(SRPlan_BUILD_CLI_SUPPORT)
+  set(SRPlan_INSTALL_CLIMODULES_BIN_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_CLIMODULES_BIN_DIR}")
+  set(SRPlan_INSTALL_CLIMODULES_LIB_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_CLIMODULES_LIB_DIR}")
+  set(SRPlan_INSTALL_CLIMODULES_SHARE_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_CLIMODULES_SHARE_DIR}")
+endif()
+
+
+
+# --------------------------------------------------------------------------
+# Configure and install headers
+# --------------------------------------------------------------------------
+
+set(files
+  vtkSRPlanConfigure.h
+  vtkSRPlanVersionConfigure.h
+  )
+foreach(f ${files})
+  configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/CMake/${f}.in
+    ${CMAKE_CURRENT_BINARY_DIR}/${f}
+    )
+endforeach()
+if(NOT Slicer_INSTALL_NO_DEVELOPMENT)
+  install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/vtkSRPlanConfigure.h"
+    "${CMAKE_CURRENT_BINARY_DIR}/vtkSRPlanVersionConfigure.h"
+    DESTINATION ${SRPlan_INSTALL_INCLUDE_DIR} COMPONENT Development
+    )
+endif()
+
+
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
 
 
 #-----------------------------------------------------------------------------
@@ -94,15 +175,19 @@ option(SRPlan_BUILD_DICOM_SUPPORT "Build SRPlan with DICOM support" ON)
 
 include(SRPlanQtSetup)
 
-include(SRPlanVTKSetup)
+include(SRPlanDCMTKSetup)
 
+include(SRPlanVTKSetup)
+include(SRPlanITKSetup)
 
 include(SRPlanCTKSetup)
+
+include(SRPlanjqPlotSetup)
 #-----------------------------------------------------------------------------
 # Subdirectories
 #-----------------------------------------------------------------------------
 
 add_subdirectory(Libs)
-#add_subdirectory(Base)
+add_subdirectory(Base)
 #add_subdirectory(Resources)
 

@@ -18,23 +18,23 @@
 
 ==============================================================================*/
 
-#include "vtkSlicerConfigure.h" // For Slicer_USE_PYTHONQT
+#include "vtkSRPlanConfigure.h" // For Slicer_USE_PYTHONQT
 
 // Qt includes
 #include <QDebug>
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
 # include <QDir>
 # include <QVariant>
 #endif
 
 // CTK includes
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
 # include <ctkScopedCurrentDir.h>
 #endif
 
 // SlicerQt includes
 #include "qSlicerLoadableModule.h"
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
 # include "qSlicerCoreApplication.h"
 # include "qSlicerCorePythonManager.h"
 #endif
@@ -61,7 +61,7 @@ qSlicerLoadableModule::~qSlicerLoadableModule()
 bool qSlicerLoadableModule::importModulePythonExtensions(
     qSlicerCorePythonManager * pythonManager, const QString& intDir, const QString& modulePath)
 {
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   if(!pythonManager)
     {
     return false;
@@ -100,7 +100,7 @@ bool qSlicerLoadableModule::addModuleToSlicerModules(
     qSlicerAbstractModule * module,
     const QString& moduleName)
 {
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   if(!pythonManager || !module || moduleName.isEmpty())
     {
     return false;
@@ -125,7 +125,7 @@ bool qSlicerLoadableModule::addModuleNameToSlicerModuleNames(
     qSlicerCorePythonManager * pythonManager,
     const QString& moduleName)
 {
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   if(!pythonManager || moduleName.isEmpty())
     {
     return false;
@@ -150,7 +150,7 @@ void qSlicerLoadableModule::setup()
 #endif
   Q_ASSERT(d != 0);
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   qSlicerCoreApplication * app = qSlicerCoreApplication::application();
   if (app && !app->isEmbeddedModule(this->path()))
     {

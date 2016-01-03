@@ -34,7 +34,7 @@ class vtkSlicerApplicationLogic;
 // MRML includes
 class vtkMRMLScene;
 
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerModuleFactoryManager
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerModuleFactoryManager
   : public qSlicerAbstractModuleFactoryManager
 {
   Q_OBJECT

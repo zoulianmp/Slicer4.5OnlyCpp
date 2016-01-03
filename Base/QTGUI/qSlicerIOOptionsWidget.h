@@ -22,12 +22,12 @@
 #define __qSlicerIOOptionsWidget_h
 
 /// QtCore includes
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 #include "qSlicerIOOptions.h"
 #include "qSlicerWidget.h"
 class qSlicerIOOptionsWidgetPrivate;
 
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerIOOptionsWidget
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerIOOptionsWidget
   : public qSlicerWidget
   , public qSlicerIOOptions
 {

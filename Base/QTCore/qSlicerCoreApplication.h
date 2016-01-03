@@ -30,10 +30,10 @@
 #include <ctkVTKObject.h>
 
 // SlicerCore includes
-#include "vtkSlicerConfigure.h" // For Slicer_USE_PYTHONQT
-#include "qSlicerBaseQTCoreExport.h"
+#include "vtkSRPlanConfigure.h" // For Slicer_USE_PYTHONQT
+#include "qSRplanBaseQTCoreExport.h"
 
-#ifdef Slicer_BUILD_DICOM_SUPPORT
+#ifdef SRPlan_BUILD_DICOM_SUPPORT
 class ctkDICOMDatabase;
 #endif
 class QSettings;
@@ -41,10 +41,10 @@ class qSlicerCoreIOManager;
 class qSlicerCoreCommandOptions;
 class qSlicerCoreApplicationPrivate;
 class qSlicerModuleManager;
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
 class qSlicerCorePythonManager;
 #endif
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
 class qSlicerExtensionsManagerModel;
 #endif
 class vtkDataIOManagerLogic;
@@ -53,7 +53,7 @@ class vtkMRMLApplicationLogic;
 class vtkMRMLRemoteIOLogic;
 class vtkMRMLScene;
 
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerCoreApplication : public QApplication
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerCoreApplication : public QApplication
 {
   Q_OBJECT
   QVTK_OBJECT
@@ -223,7 +223,7 @@ public:
   /// \sa qSlicerUtils::isRelease()
   bool isRelease()const;
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   /// Get python manager
   qSlicerCorePythonManager* corePythonManager()const;
 
@@ -232,7 +232,7 @@ public:
   void setCorePythonManager(qSlicerCorePythonManager* pythonManager);
 #endif
 
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
   /// Get extension manager model
   Q_INVOKABLE qSlicerExtensionsManagerModel* extensionsManagerModel()const;
 
@@ -316,7 +316,7 @@ public:
   /// \sa qSlicerCoreApplicationPrivate::discoverRepository
   QString os()const;
 
-#ifdef Slicer_BUILD_DICOM_SUPPORT
+#ifdef SRPlan_BUILD_DICOM_SUPPORT
   /// Return the active slicer dicom database (will be NULL until set by dicom
   /// management code).
   Q_INVOKABLE ctkDICOMDatabase* dicomDatabase() const;

@@ -26,7 +26,7 @@
 class qSlicerFileWriterOptionsWidgetPrivate;
 
 /// Base class for all the Writer Options widget.
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerFileWriterOptionsWidget
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerFileWriterOptionsWidget
   : public qSlicerIOOptionsWidget
 {
   Q_OBJECT

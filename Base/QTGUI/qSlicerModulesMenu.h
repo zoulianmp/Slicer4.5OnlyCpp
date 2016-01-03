@@ -25,7 +25,7 @@
 #include <QMenu>
 
 // CTK includes
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 class qSlicerAbstractCoreModule;
 class qSlicerModulesMenuPrivate;
@@ -34,7 +34,7 @@ class qSlicerModuleManager;
 ///
 /// qSlicerModulesMenu supports a tree hierarchy of modules (based on
 /// module->category() )
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerModulesMenu: public QMenu
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerModulesMenu: public QMenu
 {
   Q_OBJECT
   Q_PROPERTY(QString currentModule READ currentModule WRITE setCurrentModule NOTIFY currentModuleChanged)

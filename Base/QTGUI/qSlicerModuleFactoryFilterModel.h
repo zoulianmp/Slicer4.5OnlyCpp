@@ -26,10 +26,10 @@
 #include <QStringList>
 
 // QtGUI includes
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 class qSlicerModuleFactoryFilterModelPrivate;
 
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerModuleFactoryFilterModel
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerModuleFactoryFilterModel
   : public QSortFilterProxyModel
 {
   Q_OBJECT

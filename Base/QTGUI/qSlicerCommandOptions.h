@@ -24,11 +24,11 @@
 // SlicerQt includes
 #include "qSlicerCoreCommandOptions.h"
 
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 class qSlicerCommandOptionsPrivate;
 
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerCommandOptions : public qSlicerCoreCommandOptions
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerCommandOptions : public qSlicerCoreCommandOptions
 {
   Q_OBJECT
   Q_PROPERTY(bool noSplash READ noSplash CONSTANT)

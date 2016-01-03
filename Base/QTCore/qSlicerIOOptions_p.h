@@ -35,7 +35,7 @@
 //
 
 //-----------------------------------------------------------------------------
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerIOOptionsPrivate
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerIOOptionsPrivate
 {
 public:
   virtual ~qSlicerIOOptionsPrivate();

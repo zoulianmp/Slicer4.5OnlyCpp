@@ -58,7 +58,7 @@ bool qSlicerCommandOptions::showPythonInteractor() const
 //-----------------------------------------------------------------------------
 bool qSlicerCommandOptions::enableQtTesting()const
 {
-#ifdef Slicer_USE_QtTesting
+#ifdef SRPlan_USE_QtTesting
   return this->parsedArgs().value("qt-testing").toBool();
 #else
   return false;
@@ -79,7 +79,7 @@ void qSlicerCommandOptions::addArguments()
   this->addArgument("no-main-window", "", QVariant::Bool,
                     "Disables display of the main slicer window.  Use with --python-script for alternate interface");
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   if (!qSlicerCoreApplication::testAttribute(qSlicerCoreApplication::AA_DisablePython))
     {
     this->addArgument("show-python-interactor", "", QVariant::Bool,
@@ -87,7 +87,7 @@ void qSlicerCommandOptions::addArguments()
     }
 #endif
 
-#ifdef Slicer_USE_QtTesting
+#ifdef SRPlan_USE_QtTesting
   this->addArgument("qt-testing", "", QVariant::Bool,
                     "Enable QtTesting in the user interface");
 #endif

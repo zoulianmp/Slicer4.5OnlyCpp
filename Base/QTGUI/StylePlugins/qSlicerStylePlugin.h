@@ -28,9 +28,9 @@
 class QStyle;
 
 // Slicer includes
-#include "qSlicerBaseQTGUIStylePluginsExport.h"
+#include "qSRPlanBaseQTGUIStylePluginsExport.h"
 
-class Q_SLICER_STYLES_PLUGINS_EXPORT qSlicerStylePlugin : public QStylePlugin
+class Q_SRPlan_STYLES_PLUGINS_EXPORT qSlicerStylePlugin : public QStylePlugin
 {
 public:
   /// Superclass typedef

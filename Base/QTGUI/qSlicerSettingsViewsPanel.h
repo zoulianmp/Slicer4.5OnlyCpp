@@ -25,12 +25,12 @@
 #include <ctkSettingsPanel.h>
 
 // QtGUI includes
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 class QSettings;
 class qSlicerSettingsViewsPanelPrivate;
 
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerSettingsViewsPanel
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerSettingsViewsPanel
   : public ctkSettingsPanel
 {
   Q_OBJECT

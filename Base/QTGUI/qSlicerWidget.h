@@ -29,13 +29,13 @@
 #include <ctkVTKObject.h>
 
 #include "qSlicerObject.h"
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 class vtkMRMLScene;
 class QScrollArea;
 class qSlicerWidgetPrivate;
 
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerWidget : public QWidget, public virtual qSlicerObject
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerWidget : public QWidget, public virtual qSlicerObject
 {
   Q_OBJECT
   QVTK_OBJECT

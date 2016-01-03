@@ -22,14 +22,14 @@
 #define __qSlicerLayoutManager_h
 
 // CTK includes
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 // MRMLWidgets includes
 #include <qMRMLLayoutManager.h>
 
 class qSlicerLayoutManagerPrivate;
 
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerLayoutManager : public qMRMLLayoutManager
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerLayoutManager : public qMRMLLayoutManager
 {
   Q_OBJECT
 public:

@@ -40,7 +40,7 @@
 // CTK includes
 #include <ctkPimpl.h>
 #include <ctkVTKObject.h>
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 // SlicerQt includes
 #include "qSlicerMouseModeToolBar.h"

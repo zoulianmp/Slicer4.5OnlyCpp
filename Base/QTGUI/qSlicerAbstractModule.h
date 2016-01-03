@@ -29,15 +29,15 @@
 
 // SlicerQt includes
 #include "qSlicerAbstractCoreModule.h"
-#include "qSlicerBaseQTGUIExport.h"
-#include "vtkSlicerVersionConfigure.h" // For Slicer_VERSION_MAJOR, Slicer_VERSION_MINOR
+#include "qSRPlanBaseQTGUIExport.h"
+#include "vtkSRPlanVersionConfigure.h" // For Slicer_VERSION_MAJOR, Slicer_VERSION_MINOR
 
 class QAction;
 class qSlicerAbstractModulePrivate;
 
 /// Overrides qSlicerAbstractCoreModule and adds an icon property to the
 /// module and associates a QAction to it.
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerAbstractModule
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerAbstractModule
   : public qSlicerAbstractCoreModule
 {
   Q_OBJECT

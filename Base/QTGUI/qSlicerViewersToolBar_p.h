@@ -41,7 +41,7 @@
 #include <ctkPimpl.h>
 #include <ctkSignalMapper.h>
 #include <ctkVTKObject.h>
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 // SlicerQt includes
 #include "qSlicerViewersToolBar.h"

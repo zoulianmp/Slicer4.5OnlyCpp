@@ -23,9 +23,9 @@
 
 // Slicer includes
 #include "qSlicerStyle.h"
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerDarkStyle : public qSlicerStyle
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerDarkStyle : public qSlicerStyle
 {
   Q_OBJECT
 public:

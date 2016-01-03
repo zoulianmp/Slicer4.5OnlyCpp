@@ -1,5 +1,5 @@
 if(BUILD_TESTING)
-  # Code specfic to Slicer testing is added here.
+  # Code specfic to SRPlan testing is added here.
   set(KIT ${PROJECT_NAME})
   set(CMAKE_TESTDRIVER_BEFORE_TESTMAIN "DEBUG_LEAKS_ENABLE_EXIT_ERROR();" )
   include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -16,11 +16,11 @@ if(BUILD_TESTING)
     qSlicerWidgetTest1.cxx
     qSlicerWidgetTest2.cxx
     )
-  if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
+  if(SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT)
     list(APPEND KIT_TEST_SRCS
       )
   endif()
-  if(Slicer_USE_PYTHONQT)
+  if(SRPlan_USE_PYTHONQT)
     list(APPEND KIT_TEST_SRCS
       qSlicerLoadableModuleWithPythonTest.cxx
       qSlicerPythonManagerWithoutApplicationTest.cxx
@@ -35,7 +35,7 @@ if(BUILD_TESTING)
 
   set(KIT_TEST_MOC_SRCS
     )
-  if(Slicer_USE_PYTHONQT)
+  if(SRPlan_USE_PYTHONQT)
     list(APPEND KIT_TEST_MOC_SRCS
       qSlicerLoadableModuleWithPythonTest.cxx
       qSlicerPythonManagerWithoutApplicationTest.cxx
@@ -68,10 +68,10 @@ if(BUILD_TESTING)
   simple_test( qSlicerWidgetTest1 )
   simple_test( qSlicerWidgetTest2 )
 
-  if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
+  if(SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT)
   endif()
 
-  if(Slicer_USE_PYTHONQT)
+  if(SRPlan_USE_PYTHONQT)
     simple_test( qSlicerLoadableModuleWithPythonTest )
     simple_test( qSlicerPythonManagerWithoutApplicationTest )
     simple_test( qSlicerScriptedLoadableModuleTest )
@@ -81,16 +81,16 @@ if(BUILD_TESTING)
 endif()
 
 #
-# Test templates - Common to both Slicer and the extensions
+# Test templates - Common to both SRPlan and the extensions
 #
 
-set(Slicer_CXX_MODULE_TEST_TEMPLATES_DIR ${CMAKE_CURRENT_SOURCE_DIR}
+set(SRPlan_CXX_MODULE_TEST_TEMPLATES_DIR ${CMAKE_CURRENT_SOURCE_DIR}
   CACHE INTERNAL "Path to cxx test templates directory.")
 
 # Install the file so that project building against the 'installed tree' can reference it.
-if(NOT Slicer_INSTALL_NO_DEVELOPMENT)
+if(NOT SRPlan_INSTALL_NO_DEVELOPMENT)
   install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/qSlicerUtilsTest1.cxx.in
-    DESTINATION ${Slicer_INSTALL_SHARE_DIR} COMPONENT Development
+    DESTINATION ${SRPlan_INSTALL_SHARE_DIR} COMPONENT Development
     )
 endif()

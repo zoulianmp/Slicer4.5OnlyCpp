@@ -1,4 +1,4 @@
-project(SlicerBaseLogic)
+project(SRPlanBaseLogic)
 
 # --------------------------------------------------------------------------
 # Dependencies
@@ -7,15 +7,15 @@ project(SlicerBaseLogic)
 #
 # ModuleDescriptionParser
 #
-if(Slicer_BUILD_CLI_SUPPORT)
-  find_package(SlicerExecutionModel REQUIRED ModuleDescriptionParser)
+if(SRPlan_BUILD_CLI_SUPPORT)
+  find_package(SRPlanExecutionModel REQUIRED ModuleDescriptionParser)
 endif()
 
 #
 # VTK
 #
-if(Slicer_USE_PYTHONQT AND NOT VTK_WRAP_PYTHON)
-  message(FATAL_ERROR "Since Slicer_USE_PYTHONQT is ON, VTK_WRAP_PYTHON is expected to be ON. "
+if(SRPlan_USE_PYTHONQT AND NOT VTK_WRAP_PYTHON)
+  message(FATAL_ERROR "Since SRPlan_USE_PYTHONQT is ON, VTK_WRAP_PYTHON is expected to be ON. "
                       "Re-configure VTK with python wrapping.")
 endif()
 
@@ -27,7 +27,7 @@ set(${PROJECT_NAME}_ITK_COMPONENTS
   ITKIOTransformBase
   ITKTransform
   )
-if(Slicer_BUILD_CLI_SUPPORT)
+if(SRPlan_BUILD_CLI_SUPPORT)
   list(APPEND ${PROJECT_NAME}_ITK_COMPONENTS ${ModuleDescriptionParser_ITK_COMPONENTS})
 endif()
 find_package(ITK 4.6 COMPONENTS ${${PROJECT_NAME}_ITK_COMPONENTS} REQUIRED)
@@ -62,14 +62,14 @@ set(include_dirs
   ${LibArchive_INCLUDE_DIR}
   )
 
-if(Slicer_BUILD_CLI_SUPPORT)
+if(SRPlan_BUILD_CLI_SUPPORT)
   list(APPEND include_dirs
     ${MRMLCLI_INCLUDE_DIRS}
     ${ModuleDescriptionParser_INCLUDE_DIRS}
     )
 endif()
 
-if(Slicer_USE_PYTHONQT)
+if(SRPlan_USE_PYTHONQT)
   list(APPEND include_dirs
     ${PYTHON_INCLUDE_DIR}
     )
@@ -78,12 +78,12 @@ endif()
 include_directories(${include_dirs})
 
 # --------------------------------------------------------------------------
-# Update Slicer_Base_INCLUDE_DIRS
+# Update SRPlan_Base_INCLUDE_DIRS
 # --------------------------------------------------------------------------
-set(Slicer_Base_INCLUDE_DIRS ${Slicer_Base_INCLUDE_DIRS}
+set(SRPlan_Base_INCLUDE_DIRS ${SRPlan_Base_INCLUDE_DIRS}
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
-  CACHE INTERNAL "Slicer Base includes" FORCE)
+  CACHE INTERNAL "SRPlan Base includes" FORCE)
 
 # --------------------------------------------------------------------------
 # Configure headers
@@ -110,7 +110,7 @@ endif()
 # --------------------------------------------------------------------------
 # Sources
 # --------------------------------------------------------------------------
-set(SlicerBaseLogic_SRCS
+set(SRPlanBaseLogic_SRCS
   # Logic classes (data management and calculation)
   vtkSlicerApplicationLogic.cxx
   vtkSlicerModuleLogic.cxx
@@ -125,8 +125,8 @@ set(SlicerBaseLogic_SRCS
   vtkSystemInformation.cxx
   )
 
-if(Slicer_USE_PYTHONQT)
-  list(APPEND SlicerBaseLogic_SRCS
+if(SRPlan_USE_PYTHONQT)
+  list(APPEND SRPlanBaseLogic_SRCS
     vtkSlicerScriptedLoadableModuleLogic.cxx
     )
 endif()
@@ -134,10 +134,10 @@ endif()
 # --------------------------------------------------------------------------
 # Build library
 # --------------------------------------------------------------------------
-set(lib_name SlicerBaseLogic)
+set(lib_name SRPlanBaseLogic)
 
-#set(srcs ${SlicerBaseLogic_SRCS} ${Instantiator_SRCS})
-set(srcs ${SlicerBaseLogic_SRCS})
+#set(srcs ${SRPlanBaseLogic_SRCS} ${Instantiator_SRCS})
+set(srcs ${SRPlanBaseLogic_SRCS})
 
 add_library(${lib_name} ${srcs})
 
@@ -146,18 +146,18 @@ set(libs
   ${VTK_LIBRARIES}
   )
 
-# Archive support used by extensions and by slicer data bundle
+# Archive support used by extensions and by SRPlan data bundle
 list(APPEND libs
   ${LibArchive_LIBRARY}
   )
 
-if(Slicer_BUILD_CLI_SUPPORT)
+if(SRPlan_BUILD_CLI_SUPPORT)
   list(APPEND libs
     MRMLCLI
     )
 endif()
 
-if(Slicer_USE_PYTHONQT)
+if(SRPlan_USE_PYTHONQT)
   set(VTK_COMMON_PYTHON_LIBRARY
     vtkWrappingPythonCore # For vtkPythonUtil
     )
@@ -172,22 +172,22 @@ set_target_properties(${lib_name} PROPERTIES LABELS ${lib_name})
 set_target_properties(${lib_name} PROPERTIES FOLDER "Core-Base")
 
 # Apply user-defined properties to the library target.
-if(Slicer_LIBRARY_PROPERTIES)
-  set_target_properties(${lib_name} PROPERTIES ${Slicer_LIBRARY_PROPERTIES})
+if(SRPlan_LIBRARY_PROPERTIES)
+  set_target_properties(${lib_name} PROPERTIES ${SRPlan_LIBRARY_PROPERTIES})
 endif()
 
 # --------------------------------------------------------------------------
 # Export target
 # --------------------------------------------------------------------------
-set_property(GLOBAL APPEND PROPERTY Slicer_TARGETS ${lib_name})
+set_property(GLOBAL APPEND PROPERTY SRPlan_TARGETS ${lib_name})
 
 # --------------------------------------------------------------------------
 # Install library
 # --------------------------------------------------------------------------
 install(TARGETS ${lib_name}
-  RUNTIME DESTINATION ${Slicer_INSTALL_BIN_DIR} COMPONENT RuntimeLibraries
-  LIBRARY DESTINATION ${Slicer_INSTALL_LIB_DIR} COMPONENT RuntimeLibraries
-  ARCHIVE DESTINATION ${Slicer_INSTALL_LIB_DIR} COMPONENT Development
+  RUNTIME DESTINATION ${SRPlan_INSTALL_BIN_DIR} COMPONENT RuntimeLibraries
+  LIBRARY DESTINATION ${SRPlan_INSTALL_LIB_DIR} COMPONENT RuntimeLibraries
+  ARCHIVE DESTINATION ${SRPlan_INSTALL_LIB_DIR} COMPONENT Development
   )
 
 # --------------------------------------------------------------------------
@@ -198,13 +198,13 @@ if(VTK_WRAP_PYTHON)
 
   vtkMacroKitPythonWrap(
     KIT_NAME ${lib_name}
-    KIT_SRCS ${SlicerBaseLogic_SRCS}
+    KIT_SRCS ${SRPlanBaseLogic_SRCS}
     KIT_PYTHON_LIBRARIES MRMLLogicPythonD
-    KIT_INSTALL_BIN_DIR ${Slicer_INSTALL_BIN_DIR}
-    KIT_INSTALL_LIB_DIR ${Slicer_INSTALL_LIB_DIR}
+    KIT_INSTALL_BIN_DIR ${SRPlan_INSTALL_BIN_DIR}
+    KIT_INSTALL_LIB_DIR ${SRPlan_INSTALL_LIB_DIR}
     )
   # Export target
-  set_property(GLOBAL APPEND PROPERTY Slicer_TARGETS ${lib_name}Python ${lib_name}PythonD)
+  set_property(GLOBAL APPEND PROPERTY SRPlan_TARGETS ${lib_name}Python ${lib_name}PythonD)
 
   set_target_properties(${lib_name}Python PROPERTIES FOLDER "Core-Base")
   set_target_properties(${lib_name}PythonD PROPERTIES FOLDER "Core-Base")

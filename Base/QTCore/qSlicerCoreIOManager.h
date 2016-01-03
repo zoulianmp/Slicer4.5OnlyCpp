@@ -33,7 +33,7 @@
 
 // QtCore includes
 #include <qSlicerIO.h>
-#include "qSlicerBaseQTCoreExport.h"
+#include "qSRplanBaseQTCoreExport.h"
 
 class vtkMRMLNode;
 class vtkMRMLStorableNode;
@@ -43,7 +43,7 @@ class vtkObject;
 class qSlicerCoreIOManagerPrivate;
 class qSlicerFileReader;
 class qSlicerFileWriter;
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerCoreIOManager:public QObject
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerCoreIOManager:public QObject
 {
   Q_OBJECT;
 public:

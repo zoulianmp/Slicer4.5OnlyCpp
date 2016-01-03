@@ -26,12 +26,12 @@
 
 // SlicerQt includes
 #include "qSlicerFileDialog.h"
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 class qSlicerModelsDialogPrivate;
 
 //------------------------------------------------------------------------------
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerModelsDialog : public qSlicerFileDialog
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerModelsDialog : public qSlicerFileDialog
 {
   Q_OBJECT
 public:

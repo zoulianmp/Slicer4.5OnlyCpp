@@ -325,7 +325,7 @@ bool qSlicerCoreCommandOptions::isTestingEnabled() const
   return d->ParsedArgs.value("testing").toBool();
 }
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
 //-----------------------------------------------------------------------------
 bool qSlicerCoreCommandOptions::isPythonDisabled() const
 {
@@ -348,7 +348,7 @@ void qSlicerCoreCommandOptions::addArguments()
                     "Activate testing mode. Doesn't use user settings in that mode.",
                     QVariant(false));
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   this->addArgument("disable-python", "", QVariant::Bool,
                     "Disable python support. This is equivalent to build the application with Slicer_USE_PYTHONQT=OFF.");
 
@@ -377,7 +377,7 @@ void qSlicerCoreCommandOptions::addArguments()
   this->addArgument("disable-builtin-modules", "", QVariant::Bool,
                     "Disables the loading of builtin Modules.");
 
-#ifdef Slicer_BUILD_CLI_SUPPORT
+#ifdef SRPlan_BUILD_CLI_SUPPORT
   this->addArgument("disable-cli-modules", "", QVariant::Bool,
                     "Disables the loading of any Command Line Modules.");
 
@@ -391,7 +391,7 @@ void qSlicerCoreCommandOptions::addArguments()
   this->addArgument("disable-builtin-loadable-modules", "", QVariant::Bool,
                     "Disables the loading of builtin Loadable Modules.");
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   this->addArgument("disable-scripted-loadable-modules", "", QVariant::Bool,
                     "Disables the loading of any Scripted Loadable Modules.");
 

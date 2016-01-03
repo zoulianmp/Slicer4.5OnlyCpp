@@ -1,11 +1,11 @@
 ################################################################################
 #
-#  Program: 3D Slicer
+#  Program: 3D SRPlan
 #
 #  Copyright (c) Kitware Inc.
 #
 #  See COPYRIGHT.txt
-#  or http://www.slicer.org/copyright/copyright.txt for details.
+#  or http://www.SRPlan.org/copyright/copyright.txt for details.
 #
 #  Unless required by applicable law or agreed to in writing, software
 #  distributed under the License is distributed on an "AS IS" BASIS,
@@ -19,7 +19,7 @@
 ################################################################################
 
 #
-# SlicerMacroBuildBaseQtLibrary
+# SRPlanMacroBuildBaseQtLibrary
 #
 
 #
@@ -52,7 +52,7 @@
 #                           library named <NAME>PythonQt will be built.
 #
 
-macro(SlicerMacroBuildBaseQtLibrary)
+macro(SRPlanMacroBuildBaseQtLibrary)
   set(options
     WRAP_PYTHONQT
     )
@@ -68,36 +68,36 @@ macro(SlicerMacroBuildBaseQtLibrary)
     TARGET_LIBRARIES
     RESOURCES
     )
-  CMAKE_PARSE_ARGUMENTS(SLICERQTBASELIB
+  CMAKE_PARSE_ARGUMENTS(SRPlanQTBASELIB
     "${options}"
     "${oneValueArgs}"
     "${multiValueArgs}"
     ${ARGN}
     )
 
-  message(STATUS "Configuring ${Slicer_MAIN_PROJECT_APPLICATION_NAME} Qt base library: ${SLICERQTBASELIB_NAME}")
+  message(STATUS "Configuring ${SRPlan_MAIN_PROJECT_APPLICATION_NAME} Qt base library: ${SRPlanQTBASELIB_NAME}")
   # --------------------------------------------------------------------------
   # Sanity checks
   # --------------------------------------------------------------------------
-  if(SLICERQTBASELIB_UNPARSED_ARGUMENTS)
-    message(FATAL_ERROR "Unknown keywords given to SlicerMacroBuildBaseQtLibrary(): \"${SLICERQTBASELIB_UNPARSED_ARGUMENTS}\"")
+  if(SRPlanQTBASELIB_UNPARSED_ARGUMENTS)
+    message(FATAL_ERROR "Unknown keywords given to SRPlanMacroBuildBaseQtLibrary(): \"${SRPlanQTBASELIB_UNPARSED_ARGUMENTS}\"")
   endif()
 
   set(expected_defined_vars NAME EXPORT_DIRECTIVE)
   foreach(var ${expected_defined_vars})
-    if(NOT DEFINED SLICERQTBASELIB_${var})
+    if(NOT DEFINED SRPlanQTBASELIB_${var})
       message(FATAL_ERROR "${var} is mandatory")
     endif()
   endforeach()
 
-  if(NOT DEFINED Slicer_INSTALL_NO_DEVELOPMENT)
-    message(SEND_ERROR "Slicer_INSTALL_NO_DEVELOPMENT is mandatory")
+  if(NOT DEFINED SRPlan_INSTALL_NO_DEVELOPMENT)
+    message(SEND_ERROR "SRPlan_INSTALL_NO_DEVELOPMENT is mandatory")
   endif()
 
   # --------------------------------------------------------------------------
   # Define library name
   # --------------------------------------------------------------------------
-  set(lib_name ${SLICERQTBASELIB_NAME})
+  set(lib_name ${SRPlanQTBASELIB_NAME})
 
   # --------------------------------------------------------------------------
   # Include dirs
@@ -106,30 +106,30 @@ macro(SlicerMacroBuildBaseQtLibrary)
   set(include_dirs
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
-    ${Slicer_Base_INCLUDE_DIRS}
-    ${Slicer_Libs_INCLUDE_DIRS}
-    ${SLICERQTBASELIB_INCLUDE_DIRECTORIES}
+    ${SRPlan_Base_INCLUDE_DIRS}
+    ${SRPlan_Libs_INCLUDE_DIRS}
+    ${SRPlanQTBASELIB_INCLUDE_DIRECTORIES}
     )
 
   include_directories(${include_dirs})
 
   #-----------------------------------------------------------------------------
-  # Update Slicer_Base_INCLUDE_DIRS
+  # Update SRPlan_Base_INCLUDE_DIRS
   #-----------------------------------------------------------------------------
-  set(Slicer_Base_INCLUDE_DIRS ${Slicer_Base_INCLUDE_DIRS}
+  set(SRPlan_Base_INCLUDE_DIRS ${SRPlan_Base_INCLUDE_DIRS}
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
-    CACHE INTERNAL "Slicer Base includes" FORCE)
+    CACHE INTERNAL "SRPlan Base includes" FORCE)
 
   #-----------------------------------------------------------------------------
   # Configure
   # --------------------------------------------------------------------------
-  set(MY_LIBRARY_EXPORT_DIRECTIVE ${SLICERQTBASELIB_EXPORT_DIRECTIVE})
-  set(MY_EXPORT_HEADER_PREFIX ${SLICERQTBASELIB_NAME})
+  set(MY_LIBRARY_EXPORT_DIRECTIVE ${SRPlanQTBASELIB_EXPORT_DIRECTIVE})
+  set(MY_EXPORT_HEADER_PREFIX ${SRPlanQTBASELIB_NAME})
   set(MY_LIBNAME ${lib_name})
 
   configure_file(
-    ${Slicer_SOURCE_DIR}/CMake/qSlicerExport.h.in
+    ${SRPlan_SOURCE_DIR}/CMake/qSRPlanExport.h.in
     ${CMAKE_CURRENT_BINARY_DIR}/${MY_EXPORT_HEADER_PREFIX}Export.h
     )
   set(dynamicHeaders
@@ -138,18 +138,18 @@ macro(SlicerMacroBuildBaseQtLibrary)
   #-----------------------------------------------------------------------------
   # Sources
   # --------------------------------------------------------------------------
-  QT4_WRAP_CPP(SLICERQTBASELIB_MOC_OUTPUT ${SLICERQTBASELIB_MOC_SRCS})
-  QT4_WRAP_UI(SLICERQTBASELIB_UI_CXX ${SLICERQTBASELIB_UI_SRCS})
-  if(DEFINED SLICERQTBASELIB_RESOURCES)
-    QT4_ADD_RESOURCES(SLICERQTBASELIB_QRC_SRCS ${SLICERQTBASELIB_RESOURCES})
-  endif(DEFINED SLICERQTBASELIB_RESOURCES)
+  QT4_WRAP_CPP(SRPlanQTBASELIB_MOC_OUTPUT ${SRPlanQTBASELIB_MOC_SRCS})
+  QT4_WRAP_UI(SRPlanQTBASELIB_UI_CXX ${SRPlanQTBASELIB_UI_SRCS})
+  if(DEFINED SRPlanQTBASELIB_RESOURCES)
+    QT4_ADD_RESOURCES(SRPlanQTBASELIB_QRC_SRCS ${SRPlanQTBASELIB_RESOURCES})
+  endif(DEFINED SRPlanQTBASELIB_RESOURCES)
 
-  QT4_ADD_RESOURCES(SLICERQTBASELIB_QRC_SRCS ${Slicer_SOURCE_DIR}/Resources/qSlicer.qrc)
+  QT4_ADD_RESOURCES(SRPlanQTBASELIB_QRC_SRCS ${SRPlan_SOURCE_DIR}/Resources/qSRPlan.qrc)
 
   set_source_files_properties(
-    ${SLICERQTBASELIB_UI_CXX}
-    ${SLICERQTBASELIB_MOC_OUTPUT}
-    ${SLICERQTBASELIB_QRC_SRCS}
+    ${SRPlanQTBASELIB_UI_CXX}
+    ${SRPlanQTBASELIB_MOC_OUTPUT}
+    ${SRPlanQTBASELIB_QRC_SRCS}
     WRAP_EXCLUDE
     )
 
@@ -157,60 +157,60 @@ macro(SlicerMacroBuildBaseQtLibrary)
   # Source groups
   # --------------------------------------------------------------------------
   source_group("Resources" FILES
-    ${SLICERQTBASELIB_UI_SRCS}
-    ${Slicer_SOURCE_DIR}/Resources/qSlicer.qrc
-    ${SLICERQTBASELIB_RESOURCES}
+    ${SRPlanQTBASELIB_UI_SRCS}
+    ${SRPlan_SOURCE_DIR}/Resources/qSRPlan.qrc
+    ${SRPlanQTBASELIB_RESOURCES}
   )
 
   source_group("Generated" FILES
-    ${SLICERQTBASELIB_UI_CXX}
-    ${SLICERQTBASELIB_MOC_OUTPUT}
-    ${SLICERQTBASELIB_QRC_SRCS}
+    ${SRPlanQTBASELIB_UI_CXX}
+    ${SRPlanQTBASELIB_MOC_OUTPUT}
+    ${SRPlanQTBASELIB_QRC_SRCS}
     ${dynamicHeaders}
   )
 
   # --------------------------------------------------------------------------
   # Translation
   # --------------------------------------------------------------------------
-  if(Slicer_BUILD_I18N_SUPPORT)
+  if(SRPlan_BUILD_I18N_SUPPORT)
     set(TS_DIR
       "${CMAKE_CURRENT_SOURCE_DIR}/Resources/Translations/"
     )
-    get_property(Slicer_LANGUAGES GLOBAL PROPERTY Slicer_LANGUAGES)
+    get_property(SRPlan_LANGUAGES GLOBAL PROPERTY SRPlan_LANGUAGES)
 
-    include(SlicerMacroTranslation)
-    SlicerMacroTranslation(
-      SRCS ${SLICERQTBASELIB_SRCS}
-      UI_SRCS ${SLICERQTBASELIB_UI_SRCS}
+    include(SRPlanMacroTranslation)
+    SRPlanMacroTranslation(
+      SRCS ${SRPlanQTBASELIB_SRCS}
+      UI_SRCS ${SRPlanQTBASELIB_UI_SRCS}
       TS_DIR ${TS_DIR}
-      TS_BASEFILENAME ${SLICERQTBASELIB_NAME}
-      TS_LANGUAGES ${Slicer_LANGUAGES}
+      TS_BASEFILENAME ${SRPlanQTBASELIB_NAME}
+      TS_LANGUAGES ${SRPlan_LANGUAGES}
       QM_OUTPUT_DIR_VAR QM_OUTPUT_DIR
       QM_OUTPUT_FILES_VAR QM_OUTPUT_FILES
       )
 
-    set_property(GLOBAL APPEND PROPERTY Slicer_QM_OUTPUT_DIRS ${QM_OUTPUT_DIR})
+    set_property(GLOBAL APPEND PROPERTY SRPlan_QM_OUTPUT_DIRS ${QM_OUTPUT_DIR})
   endif()
 
   # --------------------------------------------------------------------------
   # Build the library
   # --------------------------------------------------------------------------
   add_library(${lib_name}
-    ${SLICERQTBASELIB_SRCS}
-    ${SLICERQTBASELIB_MOC_OUTPUT}
-    ${SLICERQTBASELIB_UI_CXX}
-    ${SLICERQTBASELIB_QRC_SRCS}
+    ${SRPlanQTBASELIB_SRCS}
+    ${SRPlanQTBASELIB_MOC_OUTPUT}
+    ${SRPlanQTBASELIB_UI_CXX}
+    ${SRPlanQTBASELIB_QRC_SRCS}
     ${QM_OUTPUT_FILES}
     )
   set_target_properties(${lib_name} PROPERTIES LABELS ${lib_name})
 
   # Apply user-defined properties to the library target.
-  if(Slicer_LIBRARY_PROPERTIES)
-    set_target_properties(${lib_name} PROPERTIES ${Slicer_LIBRARY_PROPERTIES})
+  if(SRPlan_LIBRARY_PROPERTIES)
+    set_target_properties(${lib_name} PROPERTIES ${SRPlan_LIBRARY_PROPERTIES})
   endif()
 
   target_link_libraries(${lib_name}
-    ${SLICERQTBASELIB_TARGET_LIBRARIES}
+    ${SRPlanQTBASELIB_TARGET_LIBRARIES}
     )
 
   # Folder
@@ -220,34 +220,34 @@ macro(SlicerMacroBuildBaseQtLibrary)
   # Install library
   #-----------------------------------------------------------------------------
   install(TARGETS ${lib_name}
-    RUNTIME DESTINATION ${Slicer_INSTALL_BIN_DIR} COMPONENT RuntimeLibraries
-    LIBRARY DESTINATION ${Slicer_INSTALL_LIB_DIR} COMPONENT RuntimeLibraries
-    ARCHIVE DESTINATION ${Slicer_INSTALL_LIB_DIR} COMPONENT Development
+    RUNTIME DESTINATION ${SRPlan_INSTALL_BIN_DIR} COMPONENT RuntimeLibraries
+    LIBRARY DESTINATION ${SRPlan_INSTALL_LIB_DIR} COMPONENT RuntimeLibraries
+    ARCHIVE DESTINATION ${SRPlan_INSTALL_LIB_DIR} COMPONENT Development
   )
 
   # --------------------------------------------------------------------------
   # Install headers
   # --------------------------------------------------------------------------
-  if(NOT Slicer_INSTALL_NO_DEVELOPMENT)
+  if(NOT SRPlan_INSTALL_NO_DEVELOPMENT)
     # Install headers
     file(GLOB headers "${CMAKE_CURRENT_SOURCE_DIR}/*.h")
     install(FILES
       ${headers}
       ${dynamicHeaders}
-      DESTINATION ${Slicer_INSTALL_INCLUDE_DIR}/${PROJECT_NAME} COMPONENT Development
+      DESTINATION ${SRPlan_INSTALL_INCLUDE_DIR}/${PROJECT_NAME} COMPONENT Development
       )
   endif()
 
   # --------------------------------------------------------------------------
   # PythonQt wrapping
   # --------------------------------------------------------------------------
-  if(Slicer_USE_PYTHONQT AND SLICERQTBASELIB_WRAP_PYTHONQT)
+  if(SRPlan_USE_PYTHONQT AND SRPlanQTBASELIB_WRAP_PYTHONQT)
     ctkMacroBuildLibWrapper(
-      NAMESPACE "osb" # Use "osb" instead of "org.slicer.base" to avoid build error on windows
+      NAMESPACE "osb" # Use "osb" instead of "org.SRPlan.base" to avoid build error on windows
       TARGET ${lib_name}
-      SRCS "${SLICERQTBASELIB_SRCS}"
-      INSTALL_BIN_DIR ${Slicer_INSTALL_BIN_DIR}
-      INSTALL_LIB_DIR ${Slicer_INSTALL_LIB_DIR}
+      SRCS "${SRPlanQTBASELIB_SRCS}"
+      INSTALL_BIN_DIR ${SRPlan_INSTALL_BIN_DIR}
+      INSTALL_LIB_DIR ${SRPlan_INSTALL_LIB_DIR}
       )
     set_target_properties(${lib_name}PythonQt PROPERTIES FOLDER "Core-Base")
   endif()
@@ -255,6 +255,6 @@ macro(SlicerMacroBuildBaseQtLibrary)
   # --------------------------------------------------------------------------
   # Export target
   # --------------------------------------------------------------------------
-  set_property(GLOBAL APPEND PROPERTY Slicer_TARGETS ${SLICERQTBASELIB_NAME})
+  set_property(GLOBAL APPEND PROPERTY SRPlan_TARGETS ${SRPlanQTBASELIB_NAME})
 
 endmacro()

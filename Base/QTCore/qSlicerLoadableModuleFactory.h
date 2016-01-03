@@ -28,7 +28,7 @@
 // SlicerQt includes
 #include "qSlicerAbstractCoreModule.h"
 
-#include "qSlicerBaseQTCoreExport.h"
+#include "qSRplanBaseQTCoreExport.h"
 
 class qSlicerLoadableModuleFactoryPrivate;
 
@@ -43,7 +43,7 @@ protected:
 };
 
 //-----------------------------------------------------------------------------
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerLoadableModuleFactory :
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerLoadableModuleFactory :
   public ctkAbstractPluginFactory<qSlicerAbstractCoreModule>
 {
 public:

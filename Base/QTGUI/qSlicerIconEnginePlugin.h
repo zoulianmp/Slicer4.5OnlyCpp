@@ -25,7 +25,7 @@
 #include <ctkIconEnginePlugin.h>
 
 // SlicerQt includes
-#include "qSlicerIconEnginePluginExport.h"
+#include "qSRPlanIconEnginePluginExport.h"
 
 /// Customized ctkIconEnginePlugin to look for icons in specific directories.
 /// By default it will look for icons in the Small/Medium/Large and XLarge
@@ -45,7 +45,7 @@
 /// \endcode
 /// will use the icon in the XLarge subdirectory instead of the icon in the
 /// Medium subdirectory.
-class Q_SLICER_BASE_QTGUI_ICON_ENGINE_EXPORT qSlicerIconEnginePlugin: public ctkIconEnginePlugin
+class Q_SRPlan_BASE_QTGUI_ICON_ENGINE_EXPORT qSlicerIconEnginePlugin: public ctkIconEnginePlugin
 {
   Q_OBJECT
 public:

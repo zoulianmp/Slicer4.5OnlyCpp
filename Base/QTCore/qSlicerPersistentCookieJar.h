@@ -25,7 +25,7 @@
 #include <QNetworkCookieJar>
 
 // QtCore includes
-#include "qSlicerBaseQTCoreExport.h"
+#include "qSRplanBaseQTCoreExport.h"
 
 class qSlicerPersistentCookieJarPrivate;
 
@@ -39,7 +39,7 @@ class qSlicerPersistentCookieJarPrivate;
 /// A cookie jar can be associated with a QNetworkAccessManager using method QNetworkAccessManager::setCookieJar
 ///
 /// \sa QSettings::IniFormat, QNetworkAccessManager::setCookieJar
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerPersistentCookieJar: public QNetworkCookieJar
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerPersistentCookieJar: public QNetworkCookieJar
 {
 public:
   typedef QNetworkCookieJar Superclass;

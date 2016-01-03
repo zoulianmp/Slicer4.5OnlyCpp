@@ -26,7 +26,7 @@
 #include <QMenu>
 
 // CTK includes
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 class qSlicerMouseModeToolBarPrivate;
 class vtkMRMLScene;
@@ -38,7 +38,7 @@ class vtkSlicerApplicationLogic;
 /// \note The toolbar expects qSlicerCoreApplication::mrmlApplicationLogic() to return a valid object
 /// qSlicerMouseModeToolBar observes the singletons selection node and
 /// interaction node to control its state.
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerMouseModeToolBar: public QToolBar
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerMouseModeToolBar: public QToolBar
 {
   Q_OBJECT
   /// "vtkMRMLAnnotationFiducialNode" by default.

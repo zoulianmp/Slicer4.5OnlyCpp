@@ -25,12 +25,12 @@
 #include <QScopedPointer>
 
 // CTK includes
-#include "qSlicerBaseQTCoreExport.h"
+#include "qSRplanBaseQTCoreExport.h"
 
 class vtkMRMLScene;
 class qSlicerObjectPrivate;
 
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerObject
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerObject
 {
 public:
   qSlicerObject();

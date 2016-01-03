@@ -29,7 +29,7 @@
 #include <ctkPimpl.h>
 
 // QTBase includes
-#include "qSlicerBaseQTCoreExport.h"
+#include "qSRplanBaseQTCoreExport.h"
 
 class qSlicerAbstractModuleRepresentation;
 class vtkMRMLAbstractLogic;
@@ -52,7 +52,7 @@ class qSlicerAbstractCoreModulePrivate;
 /// displayed to the user.
 /// When a MRML scene is set to the module, the module set the scene to the
 /// UI widget and the logic.
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerAbstractCoreModule : public QObject
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerAbstractCoreModule : public QObject
 {
   /// Any object deriving from QObject must have the Q_OBJECT macro in
   /// order to have the signal/slots working and the meta-class name valid.

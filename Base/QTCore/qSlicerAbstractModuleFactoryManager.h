@@ -28,7 +28,7 @@
 // CTK includes
 #include <ctkAbstractFileBasedFactory.h>
 
-#include "qSlicerBaseQTCoreExport.h"
+#include "qSRplanBaseQTCoreExport.h"
 
 class qSlicerAbstractCoreModule;
 
@@ -62,7 +62,7 @@ class qSlicerAbstractModuleFactoryManagerPrivate;
 /// The order of initialization is defined with the dependencies of the modules.
 /// If module B depends of module A, it is assured that module B is initialized/setup after A.
 ///   factoryManager->loadModules();
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerAbstractModuleFactoryManager : public QObject
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerAbstractModuleFactoryManager : public QObject
 {
   Q_OBJECT
   /// This property holds the paths where the modules are located.

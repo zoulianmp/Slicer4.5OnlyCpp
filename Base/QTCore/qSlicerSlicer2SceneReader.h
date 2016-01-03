@@ -29,7 +29,7 @@ class qSlicerSlicer2SceneReaderPrivate;
 class vtkSlicerApplicationLogic;
 
 //-----------------------------------------------------------------------------
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerSlicer2SceneReader
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerSlicer2SceneReader
   : public qSlicerFileReader
 {
   Q_OBJECT

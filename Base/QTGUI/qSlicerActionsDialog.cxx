@@ -21,7 +21,7 @@
 // SlicerQt includes
 #include "qSlicerActionsDialog.h"
 #include "ui_qSlicerActionsDialog.h"
-#include "vtkSlicerVersionConfigure.h"
+#include "vtkSRPlanVersionConfigure.h"
 
 //-----------------------------------------------------------------------------
 class qSlicerActionsDialogPrivate: public Ui_qSlicerActionsDialog
@@ -50,7 +50,7 @@ void qSlicerActionsDialogPrivate::init()
   this->setupUi(q);
   QString shortcutsUrl =
     QString("http://wiki.slicer.org/slicerWiki/index.php/Documentation/%1.%2/")
-    .arg(Slicer_VERSION_MAJOR).arg(Slicer_VERSION_MINOR);
+    .arg(SRPlan_VERSION_MAJOR).arg(SRPlan_VERSION_MINOR);
   shortcutsUrl += "SlicerApplication/MouseandKeyboardShortcuts";
   this->WebView->setUrl( shortcutsUrl );
 }

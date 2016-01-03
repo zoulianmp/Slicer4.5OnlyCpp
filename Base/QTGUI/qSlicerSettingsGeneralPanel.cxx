@@ -32,7 +32,7 @@
 #include "qSlicerSettingsGeneralPanel.h"
 #include "ui_qSlicerSettingsGeneralPanel.h"
 
-#include "vtkSlicerConfigure.h" // For Slicer_QM_OUTPUT_DIRS, Slicer_BUILD_I18N_SUPPORT
+#include "vtkSRPlanConfigure.h" // For Slicer_QM_OUTPUT_DIRS, Slicer_BUILD_I18N_SUPPORT
 
 // --------------------------------------------------------------------------
 // qSlicerSettingsGeneralPanelPrivate
@@ -66,7 +66,7 @@ void qSlicerSettingsGeneralPanelPrivate::init()
 
   this->setupUi(q);
 
-#ifdef Slicer_BUILD_I18N_SUPPORT
+#ifdef SRPlan_BUILD_I18N_SUPPORT
   bool internationalizationEnabled =
       qSlicerApplication::application()->userSettings()->value("Internationalization/Enabled").toBool();
 

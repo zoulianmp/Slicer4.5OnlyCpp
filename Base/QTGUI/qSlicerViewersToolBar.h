@@ -26,7 +26,7 @@
 #include <QMenu>
 
 // CTK includes
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 class qSlicerViewersToolBarPrivate;
 class vtkMRMLScene;
@@ -37,7 +37,7 @@ class vtkSlicerApplicationLogic;
 /// modes of the various viewers. For example, toggling frequently
 /// used modes like the Crosshair on the 2D Viewers.
 /// \note The toolbar expects qSlicerCoreApplication::mrmlApplicationLogic() to return a valid object
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerViewersToolBar: public QToolBar
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerViewersToolBar: public QToolBar
 {
   Q_OBJECT
 public:

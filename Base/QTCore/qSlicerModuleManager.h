@@ -28,14 +28,14 @@
 // CTK includes
 #include <ctkPimpl.h>
 
-#include "qSlicerBaseQTCoreExport.h"
+#include "qSRplanBaseQTCoreExport.h"
 
 class qSlicerAbstractCoreModule;
 class qSlicerModuleFactoryManager;
 
 class qSlicerModuleManagerPrivate;
 
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerModuleManager : public QObject
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerModuleManager : public QObject
 {
   Q_OBJECT
 public:

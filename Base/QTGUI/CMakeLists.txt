@@ -1,17 +1,17 @@
-project(qSlicerBaseQTGUI)
+project(qSRPlanBaseQTGUI)
 
 #
-# See CMake/SlicerMacroBuildBaseQtLibrary.cmake for details
+# See CMake/SRPlanMacroBuildBaseQtLibrary.cmake for details
 #
 
-set(KIT_export_directive "Q_SLICER_BASE_QTGUI_EXPORT")
+set(KIT_export_directive "Q_SRPlan_BASE_QTGUI_EXPORT")
 
 # Additional directories to include
 set(KIT_include_directories
   ${MRMLLogic_INCLUDE_DIRS}
   ${MRMLDisplayableManager_INCLUDE_DIRS}
-  ${qSlicerBaseQTCore_SOURCE_DIR}
-  ${qSlicerBaseQTCore_BINARY_DIR}
+  ${qSRPlanBaseQTCore_SOURCE_DIR}
+  ${qSRPlanBaseQTCore_BINARY_DIR}
   )
 
 # Source files
@@ -97,7 +97,7 @@ set(KIT_SRCS
   qSlicerWidget.h
   )
 
-if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
+if(SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT)
   list(APPEND KIT_SRCS
     qSlicerExtensionsInstallWidget.cxx
     qSlicerExtensionsInstallWidget.h
@@ -112,14 +112,14 @@ if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
     )
 endif()
 
-if(Slicer_BUILD_I18N_SUPPORT)
+if(SRPlan_BUILD_I18N_SUPPORT)
   list(APPEND KIT_SRCS
     qSlicerSettingsInternationalizationPanel.cxx
     qSlicerSettingsInternationalizationPanel.h
     )
 endif()
 
-if(Slicer_USE_PYTHONQT)
+if(SRPlan_USE_PYTHONQT)
   list(APPEND KIT_SRCS
     qSlicerScriptedLoadableModuleFactory.cxx
     qSlicerScriptedLoadableModuleFactory.h
@@ -132,7 +132,7 @@ if(Slicer_USE_PYTHONQT)
     )
 endif()
 
-if(Slicer_USE_PYTHONQT)
+if(SRPlan_USE_PYTHONQT)
   list(APPEND KIT_SRCS
     qSlicerSettingsPythonPanel.cxx
     qSlicerSettingsPythonPanel.h
@@ -196,7 +196,7 @@ set(KIT_MOC_SRCS
   qSlicerWidget.h
   )
 
-if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
+if(SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT)
   list(APPEND KIT_MOC_SRCS
     qSlicerExtensionsInstallWidget.h
     qSlicerExtensionsManageWidget.h
@@ -206,13 +206,13 @@ if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
     )
 endif()
 
-if(Slicer_BUILD_I18N_SUPPORT)
+if(SRPlan_BUILD_I18N_SUPPORT)
   list(APPEND KIT_MOC_SRCS
     qSlicerSettingsInternationalizationPanel.h
     )
 endif()
 
-if(Slicer_USE_PYTHONQT)
+if(SRPlan_USE_PYTHONQT)
   list(APPEND KIT_MOC_SRCS
     qSlicerScriptedLoadableModule.h
     qSlicerScriptedLoadableModuleWidget.h
@@ -221,7 +221,7 @@ if(Slicer_USE_PYTHONQT)
 endif()
 
 # PythonQt decorator
-if(Slicer_USE_PYTHONQT)
+if(SRPlan_USE_PYTHONQT)
   list(APPEND KIT_MOC_SRCS
     qSlicerSettingsPythonPanel.h
     )
@@ -244,7 +244,7 @@ set(KIT_UI_SRCS
   Resources/UI/qSlicerSettingsDeveloperPanel.ui
   Resources/UI/qSlicerWebWidget.ui
   )
-if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
+if(SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT)
   list(APPEND KIT_UI_SRCS
     Resources/UI/qSlicerExtensionsActionsWidget.ui
     Resources/UI/qSlicerExtensionsButtonBox.ui
@@ -256,7 +256,7 @@ if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
 endif()
 
 # PythonQt decorator
-if(Slicer_USE_PYTHONQT)
+if(SRPlan_USE_PYTHONQT)
   list(APPEND KIT_UI_SRCS
     Resources/UI/qSlicerSettingsPythonPanel.ui
   )
@@ -264,12 +264,12 @@ endif()
 
 # Additional Target libraries (QT libs already included)
 set(KIT_target_libraries
-  qSlicerBaseQTCore
+  qSRPlanBaseQTCore
   qMRMLWidgets
   )
 
 # Python wrap
-if(Slicer_USE_PYTHONQT)
+if(SRPlan_USE_PYTHONQT)
   list(APPEND KIT_target_libraries
     CTKScriptingPythonWidgets
     )
@@ -282,7 +282,7 @@ set(KIT_resources
   )
 
 # Python wrap
-if(Slicer_USE_PYTHONQT)
+if(SRPlan_USE_PYTHONQT)
 
   # Sources
   list(APPEND KIT_SRCS
@@ -295,9 +295,9 @@ if(Slicer_USE_PYTHONQT)
     qSlicerPythonManager.h
     )
 
-endif(Slicer_USE_PYTHONQT)
+endif(SRPlan_USE_PYTHONQT)
 
-SlicerMacroBuildBaseQtLibrary(
+SRPlanMacroBuildBaseQtLibrary(
   NAME ${PROJECT_NAME}
   EXPORT_DIRECTIVE ${KIT_export_directive}
   INCLUDE_DIRECTORIES ${KIT_include_directories}
@@ -310,7 +310,7 @@ SlicerMacroBuildBaseQtLibrary(
   )
 
 #-----------------------------------------------------------------------------
-# Slicer icon engine
+# SRPlan icon engine
 #-----------------------------------------------------------------------------
 
 #
@@ -319,8 +319,8 @@ SlicerMacroBuildBaseQtLibrary(
 set(CTK_LIBRARIES CTKWidgets)
 
 ctkMacroBuildQtIconEnginesPlugin(
-  NAME qSlicerIconEnginePlugin
-  EXPORT_DIRECTIVE "Q_SLICER_BASE_QTGUI_ICON_ENGINE_EXPORT"
+  NAME qSRPlanIconEnginePlugin
+  EXPORT_DIRECTIVE "Q_SRPlan_BASE_QTGUI_ICON_ENGINE_EXPORT"
   FOLDER "Core-Base"
   SRCS qSlicerIconEnginePlugin.cxx qSlicerIconEnginePlugin.h
   MOC_SRCS qSlicerIconEnginePlugin.h
@@ -332,8 +332,8 @@ add_subdirectory(DesignerPlugins)
 add_subdirectory(StylePlugins)
 
 # Testing
-# Note: Within both Testing/Cxx and Testing/Python, some code is useful to both Slicer and the
+# Note: Within both Testing/Cxx and Testing/Python, some code is useful to both SRPlan and the
 #       Extensions. For that reason, the Testing directory is added unconditionally.
-#       The code specific to Slicer will be excluded directly in either Testing/Python
+#       The code specific to SRPlan will be excluded directly in either Testing/Python
 #       or Testing/Cxx.
 add_subdirectory(Testing)

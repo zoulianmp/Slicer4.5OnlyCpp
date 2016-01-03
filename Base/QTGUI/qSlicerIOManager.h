@@ -14,7 +14,7 @@
 #include "qSlicerCoreIOManager.h"
 #include "qSlicerFileDialog.h"
 
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 /// QT declarations
 class QDragEnterEvent;
@@ -23,7 +23,7 @@ class QWidget;
 
 class qSlicerIOManagerPrivate;
 
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerIOManager : public qSlicerCoreIOManager
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerIOManager : public qSlicerCoreIOManager
 {
   Q_OBJECT;
   QVTK_OBJECT;

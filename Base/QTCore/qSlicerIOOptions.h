@@ -26,10 +26,10 @@
 
 /// QtCore includes
 #include "qSlicerIO.h"
-#include "qSlicerBaseQTCoreExport.h"
+#include "qSRplanBaseQTCoreExport.h"
 class qSlicerIOOptionsPrivate;
 
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerIOOptions
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerIOOptions
 {
 public:
   /// Contructor initialize empty properties

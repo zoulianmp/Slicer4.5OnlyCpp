@@ -28,9 +28,11 @@
 #include <ctkProxyStyle.h>
 
 // Slicer includes
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerStyle : public ctkProxyStyle
+
+
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerStyle : public ctkProxyStyle
 {
   Q_OBJECT
 public:

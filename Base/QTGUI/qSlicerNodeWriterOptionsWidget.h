@@ -25,7 +25,7 @@
 #include "qSlicerFileWriterOptionsWidget.h"
 class qSlicerNodeWriterOptionsWidgetPrivate;
 
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerNodeWriterOptionsWidget
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerNodeWriterOptionsWidget
   : public qSlicerFileWriterOptionsWidget
 {
   Q_OBJECT

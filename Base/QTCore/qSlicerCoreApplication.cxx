@@ -46,14 +46,14 @@
 //  - Slicer_ORGANIZATION_DOMAIN
 //  - Slicer_ORGANIZATION_NAME
 //  - SLICER_REVISION_SPECIFIC_USER_SETTINGS_FILEBASENAME
-#include "vtkSlicerConfigure.h"
+#include "vtkSRPlanConfigure.h"
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
 // PythonQt includes
 #include <PythonQt.h>
 #endif
 
-#ifdef Slicer_USE_PYTHONQT_WITH_OPENSSL
+#ifdef SRPlan_USE_PYTHONQT_WITH_OPENSSL
 #include <QSslCertificate>
 #include <QSslSocket>
 #endif
@@ -62,10 +62,10 @@
 #include "qSlicerCoreApplication_p.h"
 #include "qSlicerCoreCommandOptions.h"
 #include "qSlicerCoreIOManager.h"
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
 # include "qSlicerCorePythonManager.h"
 #endif
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
 # include "qSlicerExtensionsManagerModel.h"
 #endif
 #include "qSlicerLoadableModuleFactory.h"
@@ -86,7 +86,7 @@
 // MRML includes
 #include <vtkCacheManager.h>
 #include <vtkMRMLCrosshairNode.h>
-#ifdef Slicer_BUILD_CLI_SUPPORT
+#ifdef SRPlan_BUILD_CLI_SUPPORT
 # include <vtkMRMLCommandLineModuleNode.h>
 #endif
 #include <vtkMRMLScene.h>
@@ -96,9 +96,9 @@
 #include <vtksys/SystemTools.hxx>
 
 // Slicer includes
-#include "vtkSlicerVersionConfigure.h" // For Slicer_VERSION_{MINOR, MAJOR}, Slicer_VERSION_FULL
+#include "vtkSRPlanVersionConfigure.h" // For Slicer_VERSION_{MINOR, MAJOR}, Slicer_VERSION_FULL
 
-#ifdef Slicer_BUILD_DICOM_SUPPORT
+#ifdef SRPlan_BUILD_DICOM_SUPPORT
 // XXX Avoid  warning: "HAVE_XXXX" redefined
 #undef HAVE_STAT
 #undef HAVE_FTIME
@@ -130,7 +130,7 @@ qSlicerCoreApplicationPrivate::qSlicerCoreApplicationPrivate(
   this->ReturnCode = qSlicerCoreApplication::ExitNotRequested;
   this->CoreCommandOptions = QSharedPointer<qSlicerCoreCommandOptions>(coreCommandOptions);
   this->CoreIOManager = QSharedPointer<qSlicerCoreIOManager>(coreIOManager);
-#ifdef Slicer_BUILD_DICOM_SUPPORT
+#ifdef SRPlan_BUILD_DICOM_SUPPORT
   this->DICOMDatabase = 0;
 #endif
   this->NextResourceHandle = 0;
@@ -149,7 +149,7 @@ qSlicerCoreApplicationPrivate::~qSlicerCoreApplicationPrivate()
   this->ModuleManager->factoryManager()->unloadModules();
   this->ModuleManager.clear();
   this->CoreIOManager.clear();
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   this->CorePythonManager.clear();
 #endif
 
@@ -192,8 +192,8 @@ void qSlicerCoreApplicationPrivate::init()
     QMessageBox::information(0, "Attach process", msg.arg(QCoreApplication::applicationPid()));
     }
 
-  QCoreApplication::setOrganizationDomain(Slicer_ORGANIZATION_DOMAIN);
-  QCoreApplication::setOrganizationName(Slicer_ORGANIZATION_NAME);
+  QCoreApplication::setOrganizationDomain(SRPlan_ORGANIZATION_DOMAIN);
+  QCoreApplication::setOrganizationName(SRPlan_ORGANIZATION_NAME);
 
   QSettings::setDefaultFormat(QSettings::IniFormat);
 
@@ -207,7 +207,7 @@ void qSlicerCoreApplicationPrivate::init()
   this->SlicerHome = this->discoverSlicerHomeDirectory();
   this->setEnvironmentVariable("SLICER_HOME", this->SlicerHome);
 
-#ifdef Slicer_USE_PYTHONQT_WITH_OPENSSL
+#ifdef SRPlan_USE_PYTHONQT_WITH_OPENSSL
   if (!QSslSocket::supportsSsl())
     {
     qWarning() << "[SSL] SSL support disabled - Failed to load SSL library !";
@@ -228,7 +228,7 @@ void qSlicerCoreApplicationPrivate::init()
 
   // Add 'SLICER_SHARE_DIR' to the environment so that Tcl scripts can reference
   // their dependencies.
-  this->setEnvironmentVariable("SLICER_SHARE_DIR", Slicer_SHARE_DIR);
+  this->setEnvironmentVariable("SLICER_SHARE_DIR", SRPlan_SHARE_DIR);
 
   this->ITKFactoriesDir = this->discoverITKFactoriesDirectory();
   this->setEnvironmentVariable("ITK_AUTOLOAD_PATH", this->ITKFactoriesDir);
@@ -294,7 +294,7 @@ void qSlicerCoreApplicationPrivate::init()
 
   q->handlePreApplicationCommandLineArguments();
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   if (!qSlicerCoreApplication::testAttribute(qSlicerCoreApplication::AA_DisablePython))
     {
     if (q->corePythonManager())
@@ -312,7 +312,7 @@ void qSlicerCoreApplicationPrivate::init()
     }
 #endif
 
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
 
   qSlicerExtensionsManagerModel * model = new qSlicerExtensionsManagerModel(q);
   model->setExtensionsSettingsFilePath(q->slicerRevisionUserSettingsFilePath());
@@ -424,7 +424,7 @@ QString qSlicerCoreApplicationPrivate::discoverSlicerHomeDirectory()
   if (!this->isInstalled(slicerHome))
     {
     foreach(const QString& subDir,
-            QStringList() << Slicer_BIN_DIR << Slicer_CLIMODULES_BIN_DIR << "Cxx")
+            QStringList() << SRPlan_BIN_DIR << SRPlan_CLIMODULES_BIN_DIR << "Cxx")
       {
       qSlicerUtils::pathWithoutIntDir(q->applicationDirPath(), subDir, this->IntDir);
       if (!this->IntDir.isEmpty())
@@ -452,7 +452,7 @@ void qSlicerCoreApplicationPrivate::setEnvironmentVariable(const QString& key, c
 }
 
 //-----------------------------------------------------------------------------
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
 void qSlicerCoreApplicationPrivate::setPythonOsEnviron(const QString& key, const QString& value)
 {
   if(!this->CorePythonManager->isPythonInitialized())
@@ -507,7 +507,7 @@ QString qSlicerCoreApplicationPrivate::discoverSlicerBinDirectory()
     }
 #ifndef Q_OS_MAC
   slicerBin =
-      qSlicerUtils::pathWithoutIntDir(q->applicationDirPath(), Slicer_BIN_DIR, this->IntDir);
+      qSlicerUtils::pathWithoutIntDir(q->applicationDirPath(), SRPlan_BIN_DIR, this->IntDir);
 #else
   // There are two cases to consider, the application could be started from:
   //   1) Install tree
@@ -527,7 +527,7 @@ QString qSlicerCoreApplicationPrivate::discoverSlicerBinDirectory()
     }
   slicerBin = slicerBinAsDir.path();
 #endif
-  Q_ASSERT(qSlicerUtils::pathEndsWith(slicerBin, Slicer_BIN_DIR));
+  Q_ASSERT(qSlicerUtils::pathEndsWith(slicerBin, SRPlan_BIN_DIR));
   return slicerBin;
 }
 
@@ -535,7 +535,7 @@ QString qSlicerCoreApplicationPrivate::discoverSlicerBinDirectory()
 QString qSlicerCoreApplicationPrivate::discoverITKFactoriesDirectory()
 {
   QDir itkFactoriesDir(this->SlicerHome);
-  itkFactoriesDir.cd(Slicer_ITKFACTORIES_DIR);
+  itkFactoriesDir.cd(SRPlan_ITKFACTORIES_DIR);
   if (!this->IntDir.isEmpty())
     {
     itkFactoriesDir.cd(this->IntDir);
@@ -550,7 +550,7 @@ QString qSlicerCoreApplicationPrivate::discoverITKFactoriesDirectory()
 //-----------------------------------------------------------------------------
 void qSlicerCoreApplicationPrivate::setPythonEnvironmentVariables()
 {
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   Q_Q(qSlicerCoreApplication);
   // Set PYTHONHOME if not already done
   if (this->Environment.value("PYTHONHOME").isEmpty())
@@ -576,7 +576,7 @@ void qSlicerCoreApplicationPrivate::setPythonEnvironmentVariables()
 }
 
 //-----------------------------------------------------------------------------
-#if defined(Slicer_USE_PYTHONQT) && defined(Q_WS_WIN)
+#if defined(SRPlan_USE_PYTHONQT) && defined(Q_WS_WIN)
 void qSlicerCoreApplicationPrivate::updatePythonOsEnviron()
 {
   foreach(const QString& key, this->EnvironmentVariablesCache.keys())
@@ -589,7 +589,7 @@ void qSlicerCoreApplicationPrivate::updatePythonOsEnviron()
 //-----------------------------------------------------------------------------
 void qSlicerCoreApplicationPrivate::setTclEnvironmentVariables()
 {
-#ifdef Slicer_USE_PYTHONQT_WITH_TCL
+#ifdef SRPlan_USE_PYTHONQT_WITH_TCL
   Q_Q(qSlicerCoreApplication);
   qSlicerCoreApplication * app = qSlicerCoreApplication::application();
   if (this->Environment.value("TCL_LIBRARY").isEmpty())
@@ -633,7 +633,7 @@ void qSlicerCoreApplicationPrivate::setTclEnvironmentVariables()
 #endif
 }
 
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
 //-----------------------------------------------------------------------------
 QString qSlicerCoreApplicationPrivate::defaultExtensionsInstallPathForMacOSX()const
 {
@@ -745,7 +745,7 @@ void qSlicerCoreApplication::setEnvironmentVariable(const QString& key, const QS
   // See http://doc.qt.nokia.com/4.6/qprocessenvironment.html#details
   vtksys::SystemTools::PutEnv(QString("%1=%2").arg(key).arg(value).toLatin1().constData());
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   d->setPythonOsEnviron(key, value);
 #endif
 }
@@ -853,7 +853,7 @@ void qSlicerCoreApplication::handlePreApplicationCommandLineArguments()
     this->setAttribute(AA_EnableTesting);
     }
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   if (options->isPythonDisabled())
     {
     this->setAttribute(AA_DisablePython);
@@ -1037,7 +1037,7 @@ bool qSlicerCoreApplication::isInstalled()const
 //-----------------------------------------------------------------------------
 bool qSlicerCoreApplication::isRelease()const
 {
-  return qSlicerUtils::isRelease(Slicer_VERSION_FULL);
+  return qSlicerUtils::isRelease(SRPlan_VERSION_FULL);
 }
 
 //-----------------------------------------------------------------------------
@@ -1052,7 +1052,7 @@ void qSlicerCoreApplication::setMRMLScene(vtkMRMLScene* newMRMLScene)
   // Set the default scene save directory
   newMRMLScene->SetRootDirectory(this->defaultScenePath().toLatin1());
 
-#ifdef Slicer_BUILD_CLI_SUPPORT
+#ifdef SRPlan_BUILD_CLI_SUPPORT
   // Register the node type for the command line modules
   // TODO: should probably done in the command line logic
   vtkNew<vtkMRMLCommandLineModuleNode> clmNode;
@@ -1113,14 +1113,14 @@ void qSlicerCoreApplication::setDefaultScenePath(const QString& path)
 //-----------------------------------------------------------------------------
 QString qSlicerCoreApplication::slicerSharePath() const
 {
-  return Slicer_SHARE_DIR;
+  return SRPlan_SHARE_DIR;
 }
 
 //-----------------------------------------------------------------------------
 bool qSlicerCoreApplication::isEmbeddedModule(const QString& moduleFileName)const
 {
   QString slicerRevision = this->repositoryRevision();
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
   slicerRevision = this->extensionsManagerModel()->slicerRevision();
 #endif
   return vtkSlicerApplicationLogic::IsEmbeddedModule(moduleFileName.toStdString(),
@@ -1165,7 +1165,7 @@ QString qSlicerCoreApplication::launcherSettingsFilePath()const
 #ifdef Q_OS_MAC
     return QString();
 #else
-    return this->slicerHome() + "/" Slicer_BIN_DIR "/" + this->applicationName() + "LauncherSettings.ini";
+    return this->slicerHome() + "/" SRPlan_BIN_DIR "/" + this->applicationName() + "LauncherSettings.ini";
 #endif
     }
   else
@@ -1194,7 +1194,7 @@ QString qSlicerCoreApplication::launcherRevisionSpecificUserSettingsFilePath()co
 //-----------------------------------------------------------------------------
 QString qSlicerCoreApplication::slicerDefaultSettingsFilePath()const
 {
-  return this->slicerHome() + "/" Slicer_SHARE_DIR "/" + this->applicationName() + "DefaultSettings.ini";
+  return this->slicerHome() + "/" SRPlan_SHARE_DIR "/" + this->applicationName() + "DefaultSettings.ini";
 }
 
 //-----------------------------------------------------------------------------
@@ -1217,7 +1217,7 @@ QString qSlicerCoreApplication::slicerRevisionUserSettingsFilePath()const
   QString fileName =
       QDir(fileInfo.path()).filePath(QString("%1%2%3.ini")
                                      .arg(prefix)
-                                     .arg(SLICER_REVISION_SPECIFIC_USER_SETTINGS_FILEBASENAME)
+                                     .arg(SRPlan_REVISION_SPECIFIC_USER_SETTINGS_FILEBASENAME)
                                      .arg(suffix));
   return fileName;
 }
@@ -1236,7 +1236,7 @@ QString qSlicerCoreApplication::defaultExtensionsInstallPath() const
 {
   QSettings* appSettings = this->userSettings();
   Q_ASSERT(appSettings);
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
   return QFileInfo(appSettings->fileName()).dir().filePath(Slicer_EXTENSIONS_DIRNAME);
 #else
   Q_UNUSED(appSettings);
@@ -1259,14 +1259,14 @@ void qSlicerCoreApplication::setExtensionsInstallPath(const QString& path)
     return;
     }
   this->revisionUserSettings()->setValue("Extensions/InstallPath", path);
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
   Q_ASSERT(this->extensionsManagerModel());
   this->extensionsManagerModel()->updateModel();
 #endif
 }
 
 //-----------------------------------------------------------------------------
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
 
 //-----------------------------------------------------------------------------
 void qSlicerCoreApplication::setCorePythonManager(qSlicerCorePythonManager* manager)
@@ -1284,7 +1284,7 @@ qSlicerCorePythonManager* qSlicerCoreApplication::corePythonManager()const
 
 #endif
 
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
 
 //-----------------------------------------------------------------------------
 void qSlicerCoreApplication::setExtensionsManagerModel(qSlicerExtensionsManagerModel* model)
@@ -1383,7 +1383,7 @@ QString qSlicerCoreApplication::acknowledgment()const
 //-----------------------------------------------------------------------------
 QString qSlicerCoreApplication::repositoryUrl()const
 {
-  return Slicer_WC_URL;
+  return SRPlan_WC_URL;
 }
 
 //-----------------------------------------------------------------------------
@@ -1395,40 +1395,40 @@ QString qSlicerCoreApplication::repositoryBranch()const
 //-----------------------------------------------------------------------------
 QString qSlicerCoreApplication::repositoryRevision()const
 {
-  return Slicer_WC_REVISION;
+  return SRPlan_WC_REVISION;
 }
 
 //-----------------------------------------------------------------------------
 int qSlicerCoreApplication::majorVersion() const
 {
-  return Slicer_VERSION_MAJOR;
+  return SRPlan_VERSION_MAJOR;
 }
 
 //-----------------------------------------------------------------------------
 int qSlicerCoreApplication::minorVersion() const
 {
-  return Slicer_VERSION_MINOR;
+  return SRPlan_VERSION_MINOR;
 }
 
 //-----------------------------------------------------------------------------
 QString qSlicerCoreApplication::platform()const
 {
-  return QString("%1-%2").arg(Slicer_OS).arg(Slicer_ARCHITECTURE);
+  return QString("%1-%2").arg(SRPlan_OS).arg(SRPlan_ARCHITECTURE);
 }
 
 //-----------------------------------------------------------------------------
 QString qSlicerCoreApplication::arch()const
 {
-  return Slicer_ARCHITECTURE;
+  return SRPlan_ARCHITECTURE;
 }
 
 //-----------------------------------------------------------------------------
 QString qSlicerCoreApplication::os()const
 {
-  return Slicer_OS;
+  return SRPlan_OS;
 }
 
-#ifdef Slicer_BUILD_DICOM_SUPPORT
+#ifdef SRPlan_BUILD_DICOM_SUPPORT
 //-----------------------------------------------------------------------------
 void qSlicerCoreApplication::setDICOMDatabase(ctkDICOMDatabase* dicomDatabase)
 {
@@ -1585,7 +1585,7 @@ void qSlicerCoreApplication::terminate(int returnCode)
 //----------------------------------------------------------------------------
 void qSlicerCoreApplication::loadTranslations(const QString& dir)
 {
-#ifdef Slicer_BUILD_I18N_SUPPORT
+#ifdef SRPlan_BUILD_I18N_SUPPORT
   qSlicerCoreApplication * app = qSlicerCoreApplication::application();
   Q_ASSERT(app);
 
@@ -1617,7 +1617,7 @@ void qSlicerCoreApplication::loadTranslations(const QString& dir)
 //----------------------------------------------------------------------------
 void qSlicerCoreApplication::loadLanguage()
 {
-#ifdef Slicer_BUILD_I18N_SUPPORT
+#ifdef SRPlan_BUILD_I18N_SUPPORT
   qSlicerCoreApplication * app = qSlicerCoreApplication::application();
   Q_ASSERT(app);
 
@@ -1641,7 +1641,7 @@ void qSlicerCoreApplication::loadLanguage()
 //----------------------------------------------------------------------------
 bool qSlicerCoreApplication::loadCaCertificates(const QString& slicerHome)
 {
-#ifdef Slicer_USE_PYTHONQT_WITH_OPENSSL
+#ifdef SRPlan_USE_PYTHONQT_WITH_OPENSSL
   if (QSslSocket::supportsSsl())
     {
     QSslSocket::setDefaultCaCertificates(

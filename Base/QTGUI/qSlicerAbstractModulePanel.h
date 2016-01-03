@@ -22,13 +22,13 @@
 #define __qSlicerAbstractModulePanel_h
 
 #include "qSlicerWidget.h"
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 class qSlicerAbstractCoreModule;
 class qSlicerAbstractModulePanelPrivate;
 class qSlicerModuleManager;
 
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerAbstractModulePanel: public qSlicerWidget
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerAbstractModulePanel: public qSlicerWidget
 {
   Q_OBJECT
 public:

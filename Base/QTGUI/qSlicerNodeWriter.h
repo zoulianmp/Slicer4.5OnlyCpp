@@ -22,13 +22,13 @@
 #define __qSlicerNodeWriter_h
 
 // QtCore includes
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 #include "qSlicerFileWriter.h"
 class qSlicerNodeWriterPrivate;
 class vtkMRMLNode;
 
 /// Utility class that is ready to use for most of the nodes.
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerNodeWriter
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerNodeWriter
   : public qSlicerFileWriter
 {
   Q_OBJECT

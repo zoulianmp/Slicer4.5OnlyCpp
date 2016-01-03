@@ -1,5 +1,5 @@
 
-include(${Slicer_CMAKE_DIR}/SlicerMacroBuildBaseQtLibrary.cmake)
+include(${SRPlan_CMAKE_DIR}/SRPlanMacroBuildBaseQtLibrary.cmake)
 
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}
@@ -10,12 +10,12 @@ include_directories(
 add_subdirectory(Logic)
 add_subdirectory(QTCore)
 add_subdirectory(QTGUI)
-if(Slicer_BUILD_CLI_SUPPORT)
+if(SRPlan_BUILD_CLI_SUPPORT)
   add_subdirectory(QTCLI)
   add_subdirectory(CLI)
 endif()
 
-if(Slicer_USE_PYTHONQT)
+if(SRPlan_USE_PYTHONQT)
   add_subdirectory(Python)
 endif()
 

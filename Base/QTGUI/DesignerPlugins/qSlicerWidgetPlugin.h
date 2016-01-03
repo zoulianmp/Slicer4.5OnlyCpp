@@ -23,7 +23,7 @@
 
 #include "qSlicerQTGUIAbstractPlugin.h"
 
-class Q_SLICER_DESIGNER_PLUGINS_EXPORT qSlicerWidgetPlugin
+class Q_SRPLAN_DESIGNER_PLUGINS_EXPORT qSlicerWidgetPlugin
   : public qSlicerQTGUIAbstractPlugin
 {
   Q_OBJECT

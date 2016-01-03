@@ -23,12 +23,12 @@
 
 // QtCore includes
 #include "qSlicerIO.h"
-#include "qSlicerBaseQTCoreExport.h"
+#include "qSRplanBaseQTCoreExport.h"
 
 class qSlicerFileReaderOptions;
 class qSlicerFileReaderPrivate;
 
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerFileReader
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerFileReader
   : public qSlicerIO
 {
   Q_OBJECT

@@ -24,7 +24,7 @@
 // For:
 //  - Slicer_QTLOADABLEMODULES_LIB_DIR
 //  - Slicer_USE_PYTHONQT
-#include "vtkSlicerConfigure.h"
+#include "vtkSRPlanConfigure.h"
 
 // SlicerQt includes
 #include "qSlicerLoadableModuleFactory.h"
@@ -74,20 +74,20 @@ QStringList qSlicerLoadableModuleFactoryPrivate::modulePaths() const
 
   QStringList defaultQTModulePaths;
 
-#ifdef Slicer_BUILD_QTLOADABLEMODULES
+#ifdef SRPlan_BUILD_QTLOADABLEMODULES
   bool appendDefaultQTModulePaths = true;
 #else
   bool appendDefaultQTModulePaths = app->isInstalled();
 #endif
   if (appendDefaultQTModulePaths)
     {
-    defaultQTModulePaths << app->slicerHome() + "/" + Slicer_QTLOADABLEMODULES_LIB_DIR;
+    defaultQTModulePaths << app->slicerHome() + "/" + SRPlan_QTLOADABLEMODULES_LIB_DIR;
     if (!app->intDir().isEmpty())
       {
       // On Win32, *both* paths have to be there, since scripts are installed
       // in the install location, and exec/libs are *automatically* installed
       // in intDir.
-      defaultQTModulePaths << app->slicerHome() + "/" + Slicer_QTLOADABLEMODULES_LIB_DIR + "/" + app->intDir();
+      defaultQTModulePaths << app->slicerHome() + "/" + SRPlan_QTLOADABLEMODULES_LIB_DIR + "/" + app->intDir();
       }
     }
 

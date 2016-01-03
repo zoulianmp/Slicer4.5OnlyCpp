@@ -26,7 +26,7 @@
 
 // CTK includes
 #include <ctkPimpl.h>
-#include "qSlicerBaseQTGUIExport.h"
+#include "qSRPlanBaseQTGUIExport.h"
 
 class qSlicerModuleSelectorToolBarPrivate;
 class qSlicerModuleManager;
@@ -39,7 +39,7 @@ class qSlicerAbstractCoreModule;
 /// qSlicerModuleSelectorToolBar supports a tree hierarchy of modules (based on
 /// module->categories() ), previous/next buttons to browse the history of
 /// selected modules. (and a plain history button)
-class Q_SLICER_BASE_QTGUI_EXPORT qSlicerModuleSelectorToolBar: public QToolBar
+class Q_SRPlan_BASE_QTGUI_EXPORT qSlicerModuleSelectorToolBar: public QToolBar
 {
   Q_OBJECT
 public:
