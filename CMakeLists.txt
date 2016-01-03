@@ -189,5 +189,5 @@ include(SRPlanjqPlotSetup)
 
 add_subdirectory(Libs)
 add_subdirectory(Base)
-#add_subdirectory(Resources)
+add_subdirectory(Resources)
 
