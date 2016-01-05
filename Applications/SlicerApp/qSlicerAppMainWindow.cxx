@@ -41,10 +41,10 @@
 // CTK includes
 #include <ctkErrorLogWidget.h>
 #include <ctkMessageBox.h>
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
 # include <ctkPythonConsole.h>
 #endif
-#ifdef Slicer_USE_QtTesting
+#ifdef SRPlan_USE_QtTesting
 #include <ctkQtTestingUtility.h>
 #endif
 #include <ctkSettingsDialog.h>
@@ -100,7 +100,7 @@ void setThemeIcon(QAction* action, const QString& name)
 qSlicerAppMainWindowPrivate::qSlicerAppMainWindowPrivate(qSlicerAppMainWindow& object)
   : q_ptr(&object)
 {
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   this->PythonConsole = 0;
 #endif
   this->ErrorLogWidget = 0;
@@ -307,7 +307,7 @@ void qSlicerAppMainWindowPrivate::setupUi(QMainWindow * mainWindow)
   this->LayoutManager->setScriptedDisplayableManagerDirectory(
       qSlicerApplication::application()->slicerHome() + "/bin/Python/mrmlDisplayableManager");
   qSlicerApplication::application()->setLayoutManager(this->LayoutManager);
-#ifdef Slicer_USE_QtTesting
+#ifdef SRPlan_USE_QtTesting
   // we store this layout manager to the Object state property for QtTesting
   qSlicerApplication::application()->testingUtility()->addObjectStateProperty(
       qSlicerApplication::application()->layoutManager(), QString("layout"));
@@ -460,7 +460,7 @@ void qSlicerAppMainWindowPrivate::setupUi(QMainWindow * mainWindow)
   //----------------------------------------------------------------------------
   // Python console
   //----------------------------------------------------------------------------
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   if (q->pythonConsole())
     {
     QObject::connect(q->pythonConsole(), SIGNAL(aboutToExecute(const QString&)),
@@ -716,7 +716,7 @@ qSlicerModuleSelectorToolBar* qSlicerAppMainWindow::moduleSelector()const
   return d->ModuleSelectorToolBar;
 }
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
 //---------------------------------------------------------------------------
 ctkPythonConsole* qSlicerAppMainWindow::pythonConsole()const
 {
@@ -870,7 +870,7 @@ void qSlicerAppMainWindow::on_FileCloseSceneAction_triggered()
 //---------------------------------------------------------------------------
 void qSlicerAppMainWindow::on_EditRecordMacroAction_triggered()
 {
-#ifdef Slicer_USE_QtTesting
+#ifdef SRPlan_USE_QtTesting
   qSlicerApplication::application()->testingUtility()->recordTestsBySuffix(QString("xml"));
 #endif
 }
@@ -878,7 +878,7 @@ void qSlicerAppMainWindow::on_EditRecordMacroAction_triggered()
 //---------------------------------------------------------------------------
 void qSlicerAppMainWindow::on_EditPlayMacroAction_triggered()
 {
-#ifdef Slicer_USE_QtTesting
+#ifdef SRPlan_USE_QtTesting
   qSlicerApplication::application()->testingUtility()->openPlayerDialog();
 #endif
 }
@@ -925,7 +925,7 @@ void qSlicerAppMainWindow::on_WindowErrorLogAction_triggered()
 //-----------------------------------------------------------------------------
 void qSlicerAppMainWindow::on_WindowPythonInteractorAction_triggered()
 {
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   ctkPythonConsole* console = this->pythonConsole();
   Q_ASSERT(console);
   console->show();
@@ -974,14 +974,14 @@ void qSlicerAppMainWindow::on_HelpBrowseTutorialsAction_triggered()
 {
   QDesktopServices::openUrl(QUrl(QString(
     "http://www.slicer.org/slicerWiki/index.php/Documentation/%1.%2/Training")
-      .arg(Slicer_VERSION_MAJOR).arg(Slicer_VERSION_MINOR)));
+      .arg(SRPlan_VERSION_MAJOR).arg(SRPlan_VERSION_MINOR)));
 }
 //---------------------------------------------------------------------------
 void qSlicerAppMainWindow::on_HelpInterfaceDocumentationAction_triggered()
 {
   QDesktopServices::openUrl(QUrl(QString(
     "http://wiki.slicer.org/slicerWiki/index.php/Documentation/%1.%2")
-      .arg(Slicer_VERSION_MAJOR).arg(Slicer_VERSION_MINOR)));
+      .arg(SRPlan_VERSION_MAJOR).arg(SRPlan_VERSION_MINOR)));
 }
 
 //---------------------------------------------------------------------------
@@ -1082,7 +1082,7 @@ void qSlicerAppMainWindow::disclaimer()
     return;
     }
 
-  QString message = QString(Slicer_DISCLAIMER_AT_STARTUP);
+  QString message = QString(SRPlan_DISCLAIMER_AT_STARTUP);
   if (message.isEmpty())
     {
     // No disclaimer message to show, skip the popup
@@ -1161,7 +1161,7 @@ void qSlicerAppMainWindow::setupMenuActions()
     d->setErrorLogIconHighlighted(false);
     this->errorLogWidget()->installEventFilter(this);
     }
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   if (this->pythonConsole())
     {
     this->pythonConsole()->installEventFilter(this);
@@ -1170,7 +1170,7 @@ void qSlicerAppMainWindow::setupMenuActions()
 
   qSlicerApplication * app = qSlicerApplication::application();
 
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
   d->ViewExtensionsManagerAction->setVisible(
     app->revisionUserSettings()->value("Extensions/ManagerEnabled").toBool());
 #else
@@ -1300,7 +1300,7 @@ void qSlicerAppMainWindow::on_CutAction_triggered()
 //---------------------------------------------------------------------------
 void qSlicerAppMainWindow::on_ViewExtensionsManagerAction_triggered()
 {
-#ifdef Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
+#ifdef SRPlan_BUILD_EXTENSIONMANAGER_SUPPORT
   qSlicerApplication * app = qSlicerApplication::application();
   app->openExtensionsManagerDialog();
 #endif

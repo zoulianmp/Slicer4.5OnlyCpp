@@ -26,11 +26,11 @@
 
 // SlicerQt includes
 #include "qSlicerAbstractModuleWidget.h"
-#include "qSlicerModulesCoreExport.h"
+#include "qSRPlanModulesCoreExport.h"
 
 class qSlicerROIModuleWidgetPrivate;
 
-class Q_SLICER_MODULES_CORE_EXPORT qSlicerROIModuleWidget :
+class Q_SRPlan_MODULES_CORE_EXPORT qSlicerROIModuleWidget :
   public qSlicerAbstractModuleWidget
 {
   Q_OBJECT

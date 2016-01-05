@@ -329,7 +329,7 @@ public:
 
   static void loadLanguage();
 
-  /// Load certicates bundled into '<slicerHome>/<SLICER_SHARE_DIR>/Slicer.crt'.
+  /// Load certicates bundled into '<slicerHome>/<SRPlan_SHARE_DIR>/Slicer.crt'.
   /// For more details, see Slicer/Base/QTCore/Resources/Certs/README
   /// Returns \a False if 'Slicer.crt' failed to be loaded.
   /// \sa QSslSocket::defaultCaCertificates()

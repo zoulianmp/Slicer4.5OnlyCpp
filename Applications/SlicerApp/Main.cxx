@@ -28,21 +28,21 @@
 #include <QTimer>
 
 // Slicer includes
-#include "vtkSlicerConfigure.h"
+#include "vtkSRPlanConfigure.h"
 
 // CTK includes
 #include <ctkAbstractLibraryFactory.h>
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
 # include <ctkPythonConsole.h>
 #endif
 
 // Slicer includes
-#include "vtkSlicerVersionConfigure.h" // For Slicer_VERSION_FULL, Slicer_BUILD_CLI_SUPPORT
+#include "vtkSRPlanVersionConfigure.h" // For SRPlan_VERSION_FULL, Slicer_BUILD_CLI_SUPPORT
 
 // SlicerApp includes
 #include "qSlicerApplication.h"
 #include "qSlicerApplicationHelper.h"
-#ifdef Slicer_BUILD_CLI_SUPPORT
+#ifdef SRPlan_BUILD_CLI_SUPPORT
 # include "qSlicerCLIExecutableModuleFactory.h"
 # include "qSlicerCLILoadableModuleFactory.h"
 #endif
@@ -67,7 +67,7 @@
 namespace
 {
 
-#ifdef Slicer_USE_QtTesting
+#ifdef SRPlan_USE_QtTesting
 //-----------------------------------------------------------------------------
 void setEnableQtTesting()
 {
@@ -117,7 +117,7 @@ int SlicerAppMain(int argc, char* argv[])
     }
   QCoreApplication::setApplicationName(applicationName);
 
-  QCoreApplication::setApplicationVersion(Slicer_VERSION_FULL);
+  QCoreApplication::setApplicationVersion(SRPlan_VERSION_FULL);
   //vtkObject::SetGlobalWarningDisplay(false);
   QApplication::setDesktopSettingsAware(false);
   QApplication::setStyle(new qSlicerStyle());
@@ -130,11 +130,11 @@ int SlicerAppMain(int argc, char* argv[])
   app.installEventFilter(app.style());
 
 
-#ifdef Slicer_USE_QtTesting
+#ifdef SRPlan_USE_QtTesting
   setEnableQtTesting(); // disabled the native menu bar.
 #endif
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   ctkPythonConsole pythonConsole;
   pythonConsole.setWindowTitle("Slicer Python Interactor");
   if (!qSlicerApplication::testAttribute(qSlicerApplication::AA_DisablePython))
@@ -182,7 +182,7 @@ int SlicerAppMain(int argc, char* argv[])
   if (enableMainWindow)
     {
     window.reset(new qSlicerAppMainWindow);
-    window->setWindowTitle(window->windowTitle()+ " " + Slicer_VERSION_FULL);
+    window->setWindowTitle(window->windowTitle()+ " " + SRPlan_VERSION_FULL);
     }
 
   // Load all available modules

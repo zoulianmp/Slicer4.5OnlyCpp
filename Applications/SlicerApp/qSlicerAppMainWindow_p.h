@@ -26,7 +26,7 @@
 class QToolButton;
 
 // Slicer includes
-#include "qSlicerAppExport.h"
+#include "qSRPlanAppExport.h"
 #include "qSlicerAppMainWindow.h"
 #include <qSlicerIO.h>
 #include "ui_qSlicerAppMainWindow.h"
@@ -36,7 +36,7 @@ class qSlicerAppMainWindowPrivate;
 class qSlicerLayoutManager;
 
 //-----------------------------------------------------------------------------
-class Q_SLICER_APP_EXPORT qSlicerAppMainWindowPrivate
+class Q_SRPlan_APP_EXPORT qSlicerAppMainWindowPrivate
   : public Ui_qSlicerAppMainWindow
 {
   Q_DECLARE_PUBLIC(qSlicerAppMainWindow);
@@ -66,7 +66,7 @@ public:
 
   void setErrorLogIconHighlighted(bool);
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   ctkPythonConsole*               PythonConsole;
 #endif
   ctkErrorLogWidget*              ErrorLogWidget;

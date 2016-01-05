@@ -63,7 +63,7 @@ QString qSlicerEventBrokerModule::helpText()const
 {
   QString help = "<a href=\"%1/Documentation/%2.%3/Modules/EventBroker\">"
     "%1/Documentation/%2.%3/Modules/EventBroker</a>\n";
-  return help.arg(this->slicerWikiUrl()).arg(Slicer_VERSION_MAJOR).arg(Slicer_VERSION_MINOR);
+  return help.arg(this->slicerWikiUrl()).arg(SRPlan_VERSION_MAJOR).arg(SRPlan_VERSION_MINOR);
 }
 
 //-----------------------------------------------------------------------------

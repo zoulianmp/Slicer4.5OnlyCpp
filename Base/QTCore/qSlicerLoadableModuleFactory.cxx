@@ -22,7 +22,7 @@
 #include <QSettings>
 
 // For:
-//  - Slicer_QTLOADABLEMODULES_LIB_DIR
+//  - SRPlan_QTLOADABLEMODULES_LIB_DIR
 //  - Slicer_USE_PYTHONQT
 #include "vtkSRPlanConfigure.h"
 

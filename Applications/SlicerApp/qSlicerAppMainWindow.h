@@ -31,9 +31,9 @@ class ctkErrorLogWidget;
 class ctkPythonConsole;
 
 // Slicer includes
-#include "qSlicerAppExport.h"
+#include "qSRPlanAppExport.h"
 #include "qSlicerIO.h"
-#include "vtkSlicerConfigure.h" // For Slicer_BUILD_DICOM_SUPPORT, Slicer_USE_PYTHONQT, Slicer_USE_QtTesting
+#include "vtkSRPlanConfigure.h" // For Slicer_BUILD_DICOM_SUPPORT, Slicer_USE_PYTHONQT, Slicer_USE_QtTesting
 
 class qSlicerModuleSelectorToolBar;
 class qSlicerAppMainWindowPrivate;
@@ -41,7 +41,7 @@ class qSlicerAppMainWindowPrivate;
 // VTK includes
 class vtkObject;
 
-class Q_SLICER_APP_EXPORT qSlicerAppMainWindow : public QMainWindow
+class Q_SRPlan_APP_EXPORT qSlicerAppMainWindow : public QMainWindow
 {
   Q_OBJECT
 public:
@@ -55,7 +55,7 @@ public:
   /// \sa pythonConsole(), errorLogWidget()
   Q_INVOKABLE qSlicerModuleSelectorToolBar* moduleSelector()const;
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   /// Return a pointer to the python console.
   /// \sa moduleSelector(), errorLogWidget()
   Q_INVOKABLE ctkPythonConsole* pythonConsole()const;
@@ -125,7 +125,7 @@ protected slots:
   virtual void onLayoutChanged(int);
   virtual void onWarningsOrErrorsOccurred(ctkErrorLogLevel::LogLevel logLevel);
 
-#ifdef Slicer_USE_PYTHONQT
+#ifdef SRPlan_USE_PYTHONQT
   virtual void onPythonConsoleUserInput(const QString&);
 #endif
 

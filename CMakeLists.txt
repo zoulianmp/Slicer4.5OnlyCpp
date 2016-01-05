@@ -83,13 +83,16 @@ test_big_endian(CMAKE_WORDS_BIGENDIAN)
 include(CMakeDependentOption)
 
 
+option(SRPlan_USE_PYTHONQT "Build SRPlan with PythonQT support" OFF)
+
 
 option(SRPlan_BUILD_DICOM_SUPPORT "Build SRPlan with DICOM support" ON)
 
 option(SRPlan_BUILD_CLI_SUPPORT "Build SRPlan with DICOM support" OFF)
 
-
-
+option(SRPlan_BUILD_QTLOADABLEMODULES "Build QT Loadable Modules for SRPlan" ON)
+option(SRPlan_BUILD_QTSCRIPTEDMODULES "Build QT Scripted Modules for SRPlan" OFF)
+option(SRPlan_BUILD_CLI "Build CLI Modules for SRPlan" OFF)
 
 
 #-----------------------------------------------------------------------------
@@ -98,7 +101,7 @@ option(SRPlan_BUILD_CLI_SUPPORT "Build SRPlan with DICOM support" OFF)
 
 set(SRPlan_CMAKE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake" )
 
-
+set(SRPlan_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 
 #-----------------------------------------------------------------------------
 # Install no development files by default, but allow the user to get
@@ -143,6 +146,95 @@ endif()
 
 
 
+
+#-----------------------------------------------------------------------------
+# SRPlanExecutionModel settings
+#-----------------------------------------------------------------------------
+set(SRPlanExecutionModel_EXTRA_INCLUDE_DIRECTORIES "" CACHE INTERNAL "SRPlanExecutionModel extra includes" FORCE)
+set(SRPlanExecutionModel_EXTRA_EXECUTABLE_TARGET_LIBRARIES "" CACHE INTERNAL "SRPlanExecutionModel extra executable target libraries" FORCE)
+
+#-----------------------------------------------------------------------------
+# Set SRPlan buildin libraries *_DIR variables
+#-----------------------------------------------------------------------------
+set(GenerateLM_DIR ${SRPlan_BINARY_DIR}/Libs/GenerateLM)
+set(vtkAddon_DIR ${SRPlan_BINARY_DIR}/Libs/vtkAddon)
+set(vtkITK_DIR ${SRPlan_BINARY_DIR}/Libs/vtkITK)
+
+
+
+
+
+
+#-----------------------------------------------------------------------------
+# Main application
+#-----------------------------------------------------------------------------
+if(NOT DEFINED SRPlan_MAIN_PROJECT)
+  set(SRPlan_MAIN_PROJECT SRPlanApp CACHE INTERNAL "Main project name")
+endif()
+
+
+
+if(NOT DEFINED ${SRPlan_MAIN_PROJECT}_APPLICATION_NAME)
+  set(${SRPlan_MAIN_PROJECT}_APPLICATION_NAME SRPlan CACHE INTERNAL "Main application name")
+else()
+  if(NOT DEFINED SRPlanApp_APPLICATION_NAME)
+    set(SRPlanApp_APPLICATION_NAME SRPlan)
+  endif()
+endif()
+
+set(SRPlan_MAIN_PROJECT_APPLICATION_NAME ${${SRPlan_MAIN_PROJECT}_APPLICATION_NAME})
+
+if(WIN32)
+  option(SRPlan_BUILD_WIN32_CONSOLE "Build ${PROJECT_NAME} executable as a console app on windows (allows debug output)" ON)
+else()
+  set(SRPlan_BUILD_WIN32_CONSOLE OFF)
+endif()
+
+
+
+
+#-----------------------------------------------------------------------------
+# Qt Loadable and Scripted Modules relative directories
+#-----------------------------------------------------------------------------
+
+# NOTE: Make sure to update vtkSlicerApplicationLogic::GetModuleShareDirectory()
+#       if the following variables are changed.
+
+set(SRPlan_QTLOADABLEMODULES_SUBDIR "qt-loadable-modules")
+
+set(SRPlan_QTLOADABLEMODULES_BIN_DIR "${SRPlan_LIB_DIR}/${SRPlan_QTLOADABLEMODULES_SUBDIR}")
+set(SRPlan_QTLOADABLEMODULES_LIB_DIR "${SRPlan_LIB_DIR}/${SRPlan_QTLOADABLEMODULES_SUBDIR}")
+set(SRPlan_QTLOADABLEMODULES_PYTHON_LIB_DIR "${SRPlan_LIB_DIR}/${SRPlan_QTLOADABLEMODULES_SUBDIR}/Python")
+set(SRPlan_QTLOADABLEMODULES_INCLUDE_DIR "${SRPlan_INCLUDE_DIR}/${SRPlan_QTLOADABLEMODULES_SUBDIR}")
+set(SRPlan_QTLOADABLEMODULES_SHARE_DIR "${SRPlan_SHARE_DIR}/${SRPlan_QTLOADABLEMODULES_SUBDIR}")
+
+set(SRPlan_INSTALL_QTLOADABLEMODULES_BIN_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_QTLOADABLEMODULES_BIN_DIR}")
+set(SRPlan_INSTALL_QTLOADABLEMODULES_LIB_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_QTLOADABLEMODULES_LIB_DIR}")
+set(SRPlan_INSTALL_QTLOADABLEMODULES_PYTHON_LIB_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_QTLOADABLEMODULES_PYTHON_LIB_DIR}")
+set(SRPlan_INSTALL_QTLOADABLEMODULES_INCLUDE_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_QTLOADABLEMODULES_INCLUDE_DIR}")
+set(SRPlan_INSTALL_QTLOADABLEMODULES_SHARE_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_QTLOADABLEMODULES_SHARE_DIR}")
+
+if(SRPlan_USE_PYTHONQT)
+  set(SRPlan_QTSCRIPTEDMODULES_SUBDIR "qt-scripted-modules")
+
+  set(SRPlan_QTSCRIPTEDMODULES_BIN_DIR "${SRPlan_LIB_DIR}/${SRPlan_QTSCRIPTEDMODULES_SUBDIR}")
+  set(SRPlan_QTSCRIPTEDMODULES_LIB_DIR "${SRPlan_LIB_DIR}/${SRPlan_QTSCRIPTEDMODULES_SUBDIR}")
+  set(SRPlan_QTSCRIPTEDMODULES_INCLUDE_DIR "${SRPlan_INCLUDE_DIR}/${SRPlan_QTSCRIPTEDMODULES_SUBDIR}")
+  set(SRPlan_QTSCRIPTEDMODULES_SHARE_DIR "${SRPlan_SHARE_DIR}/${SRPlan_QTSCRIPTEDMODULES_SUBDIR}")
+
+  set(SRPlan_INSTALL_QTSCRIPTEDMODULES_BIN_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_QTSCRIPTEDMODULES_BIN_DIR}")
+  set(SRPlan_INSTALL_QTSCRIPTEDMODULES_LIB_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_QTSCRIPTEDMODULES_LIB_DIR}")
+  set(SRPlan_INSTALL_QTSCRIPTEDMODULES_INCLUDE_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_QTSCRIPTEDMODULES_INCLUDE_DIR}")
+  set(SRPlan_INSTALL_QTSCRIPTEDMODULES_SHARE_DIR "${SRPlan_INSTALL_ROOT}${SRPlan_QTSCRIPTEDMODULES_SHARE_DIR}")
+endif()
+
+
+
+
+
+
+
+
 # --------------------------------------------------------------------------
 # Configure and install headers
 # --------------------------------------------------------------------------
@@ -157,7 +249,7 @@ foreach(f ${files})
     ${CMAKE_CURRENT_BINARY_DIR}/${f}
     )
 endforeach()
-if(NOT Slicer_INSTALL_NO_DEVELOPMENT)
+if(NOT SRPlan_INSTALL_NO_DEVELOPMENT)
   install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/vtkSRPlanConfigure.h"
     "${CMAKE_CURRENT_BINARY_DIR}/vtkSRPlanVersionConfigure.h"
@@ -167,6 +259,10 @@ endif()
 
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+
+
+
+
 
 
 #-----------------------------------------------------------------------------
@@ -190,4 +286,39 @@ include(SRPlanjqPlotSetup)
 add_subdirectory(Libs)
 add_subdirectory(Base)
 add_subdirectory(Resources)
+
+
+
+#-----------------------------------------------------------------------------
+# Macro useful to build ModuleLogic, ModuleMRML and ModuleWidgets libraries
+#-----------------------------------------------------------------------------
+include(SRPlanMacroBuildModuleQtLibrary)
+include(SRPlanMacroBuildModuleVTKLibrary)
+
+include(SRPlanMacroBuildModuleLogic)
+include(SRPlanMacroBuildModuleMRML)
+include(SRPlanMacroBuildModuleWidgets)
+
+#-----------------------------------------------------------------------------
+# SRPlan Core and GUI library
+#-----------------------------------------------------------------------------
+set(SRPlan_CORE_LIBRARY qSRPlanBaseQTCore)
+set(SRPlan_GUI_LIBRARY qSRPlanBaseQTApp)
+
+#-----------------------------------------------------------------------------
+# Applications
+#-----------------------------------------------------------------------------
+add_subdirectory(Modules/Core)
+
+
+add_subdirectory(Base/QTApp)
+add_subdirectory(Modules)
+if (NOT SRPlan_APPLICATIONS_DIR)
+  add_subdirectory(Applications)
+else()
+  add_subdirectory(${SRPlan_APPLICATIONS_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}/Applications
+    )
+endif()
+
 

@@ -24,12 +24,12 @@
 // Qt includes
 #include <QObject>
 
-#include "qSlicerBaseQTAppExport.h"
+#include "qSRPlanBaseQTAppExport.h"
 
 class ctkPythonConsole;
 class qSlicerModuleFactoryManager;
 
-class Q_SLICER_BASE_QTAPP_EXPORT qSlicerApplicationHelper : public QObject
+class Q_SRPlan_BASE_QTAPP_EXPORT qSlicerApplicationHelper : public QObject
 {
   Q_OBJECT
 public:

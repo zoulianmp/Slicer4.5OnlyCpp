@@ -1,19 +1,19 @@
-project(qSlicerBaseQTApp)
+project(qSRPlanBaseQTApp)
 
 #
-# See CMake/SlicerMacroBuildBaseQtLibrary.cmake for details
+# See CMake/SRPlanMacroBuildBaseQtLibrary.cmake for details
 #
 
-set(KIT_export_directive "Q_SLICER_BASE_QTAPP_EXPORT")
+set(KIT_export_directive "Q_SRPlan_BASE_QTAPP_EXPORT")
 
 # Additional directories to include
 set(KIT_include_directories
-  ${qSlicerBaseQTCore_SOURCE_DIR}
-  ${qSlicerBaseQTCore_BINARY_DIR}
-  ${qSlicerBaseQTGUI_SOURCE_DIR}
-  ${qSlicerBaseQTGUI_BINARY_DIR}
-  ${qSlicerModulesCore_SOURCE_DIR}
-  ${qSlicerModulesCore_BINARY_DIR}
+  ${qSRPlanBaseQTCore_SOURCE_DIR}
+  ${qSRPlanBaseQTCore_BINARY_DIR}
+  ${qSRPlanBaseQTGUI_SOURCE_DIR}
+  ${qSRPlanBaseQTGUI_BINARY_DIR}
+  ${qSRPlanModulesCore_SOURCE_DIR}
+  ${qSRPlanModulesCore_BINARY_DIR}
   )
 
 # Source files
@@ -34,12 +34,12 @@ set(KIT_UI_SRCS
 # Additional Target libraries (QT libs already included)
 set(KIT_target_libraries
   # ${QT_LIBRARIES} # Not needed: All dependencies are transitively satisfied by other targets
-  qSlicerModulesCore
+  qSRPlanModulesCore
   )
 
-if(Slicer_BUILD_CLI_SUPPORT)
+if(SRPlan_BUILD_CLI_SUPPORT)
   list(APPEND KIT_target_libraries
-    qSlicerBaseQTCLI
+    qSRPlanBaseQTCLI
     )
 endif()
 
@@ -47,7 +47,7 @@ endif()
 set(KIT_resources
   )
 
-SlicerMacroBuildBaseQtLibrary(
+SRPlanMacroBuildBaseQtLibrary(
   NAME ${PROJECT_NAME}
   EXPORT_DIRECTIVE ${KIT_export_directive}
   INCLUDE_DIRECTORIES ${KIT_include_directories}

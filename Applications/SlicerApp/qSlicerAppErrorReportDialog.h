@@ -28,12 +28,12 @@
 #include <ctkPimpl.h>
 
 // SlicerApp includes
-#include "qSlicerAppExport.h"
+#include "qSRPlanAppExport.h"
 
 class qSlicerAppErrorReportDialogPrivate;
 
 /// Pre-request that a qSlicerApplication has been instanced
-class Q_SLICER_APP_EXPORT qSlicerAppErrorReportDialog :
+class Q_SRPlan_APP_EXPORT qSlicerAppErrorReportDialog :
   public QDialog
 {
   Q_OBJECT

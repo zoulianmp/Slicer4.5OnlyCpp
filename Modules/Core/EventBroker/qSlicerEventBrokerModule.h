@@ -27,11 +27,11 @@
 // SlicerQt includes
 #include "qSlicerCoreModule.h"
 
-#include "qSlicerModulesCoreExport.h"
+#include "qSRPlanModulesCoreExport.h"
 
 class qSlicerEventBrokerModulePrivate;
 
-class Q_SLICER_MODULES_CORE_EXPORT qSlicerEventBrokerModule :
+class Q_SRPlan_MODULES_CORE_EXPORT qSlicerEventBrokerModule :
   public qSlicerCoreModule
 {
   Q_OBJECT

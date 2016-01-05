@@ -1,14 +1,14 @@
-project(qSlicerModulesCore)
+project(qSRPlanModulesCore)
 
 #
-# See CMake/SlicerMacroBuildBaseQtLibrary.cmake for details
+# See CMake/SRPlanMacroBuildBaseQtLibrary.cmake for details
 #
-set(KIT_export_directive "Q_SLICER_MODULES_CORE_EXPORT")
+set(KIT_export_directive "Q_SRPlan_MODULES_CORE_EXPORT")
 
 # Additional directories to include
 set(KIT_include_directories
-  ${qSlicerBaseQTGUI_SOURCE_DIR}
-  ${qSlicerBaseQTGUI_BINARY_DIR}
+  ${qSRPlanBaseQTGUI_SOURCE_DIR}
+  ${qSRPlanBaseQTGUI_BINARY_DIR}
   ${MRMLLogic_INCLUDE_DIRS}
   ${CMAKE_CURRENT_SOURCE_DIR}/EventBroker
   ${CMAKE_CURRENT_SOURCE_DIR}/ROI
@@ -54,14 +54,14 @@ set(KIT_UI_SRCS
 # Additional Target libraries (QT libs already included)
 set(KIT_target_libraries
   # ${QT_LIBRARIES} # Not needed: All dependencies are transitively satisfied by other targets
-  qSlicerBaseQTGUI
+  qSRPlanBaseQTGUI
   )
 
 # Resources
 set(KIT_resources
   )
 
-SlicerMacroBuildBaseQtLibrary(
+SRPlanMacroBuildBaseQtLibrary(
   NAME ${PROJECT_NAME}
   EXPORT_DIRECTIVE ${KIT_export_directive}
   INCLUDE_DIRECTORIES ${KIT_include_directories}

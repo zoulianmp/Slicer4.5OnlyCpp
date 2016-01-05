@@ -32,7 +32,7 @@
 // We mean it.
 //
 
-#include "qSlicerBaseQTCoreExport.h"
+#include "qSRPlanBaseQTCoreExport.h"
 
 // Qt includes
 #include <QHash>
@@ -47,7 +47,7 @@ struct _object;
 typedef _object PyObject;
 #endif
 
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerScriptedUtils
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerScriptedUtils
 {
 
 public:
@@ -73,7 +73,7 @@ private:
 };
 
 
-class Q_SLICER_BASE_QTCORE_EXPORT qSlicerPythonCppAPI
+class Q_SRPlan_BASE_QTCORE_EXPORT qSlicerPythonCppAPI
 {
 public:
   qSlicerPythonCppAPI();

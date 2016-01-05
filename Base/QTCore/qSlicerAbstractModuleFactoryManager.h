@@ -40,8 +40,8 @@ class qSlicerAbstractModuleFactoryManagerPrivate;
 ///   factoryManager->registerFactory(new qSlicerLoadableModuleFactory);
 ///   ...
 /// 2) directories where the modules to load are located must be passed to the factory manager
-///   factoryManager->addSearchPath(app->slicerHome() + "/" +  Slicer_QTSCRIPTEDMODULES_LIB_DIR + "/" );
-///   factoryManager->addSearchPath(app->slicerHome() + "/" + Slicer_CLIMODULES_LIB_DIR + "/" );
+///   factoryManager->addSearchPath(app->slicerHome() + "/" +  SRPlan_QTSCRIPTEDMODULES_LIB_DIR + "/" );
+///   factoryManager->addSearchPath(app->slicerHome() + "/" + SRPlan_CLIMODULES_LIB_DIR + "/" );
 ///   ...
 /// 3) Optionally:
 ///    - specify module names to ignore: For startup speed-up and memory consummation,

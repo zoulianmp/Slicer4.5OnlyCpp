@@ -1,32 +1,32 @@
-project(SlicerApp)
+project(SRPlanApp)
 
-include(SlicerMacroBuildApplication)
+include(SRPlanMacroBuildApplication)
 
 # --------------------------------------------------------------------------
-# Slicer supports more than one application (i.e. an application
+# SRPlan supports more than one application (i.e. an application
 # "OtherApp" in addition to "APPLICATION_NAMEApp").
 #
 # In that specific case, it is required to differentiate the two applications
 # and specify which one should be considered as the *Main* one.
 #
 # This is usually done within the top level CMakeLists.txt file by setting the variable
-# Slicer_MAIN_PROJECT.
+# SRPlan_MAIN_PROJECT.
 #
 # Within the Applications/OtherApp/CMakeLists.txt of the secondary application,
-# the project name should be updated, the variable 'SlicerApp_APPLICATION_NAME'
+# the project name should be updated, the variable 'SRPlanApp_APPLICATION_NAME'
 # could also be optionnally set to a custom value.
 #
 
-# set(SlicerApp_APPLICATION_NAME ${PROJECT_NAME}) # Uncomment and optionnally set this variable using a custom value.
+# set(SRPlanApp_APPLICATION_NAME ${PROJECT_NAME}) # Uncomment and optionnally set this variable using a custom value.
 
-if(${PROJECT_NAME} STREQUAL ${Slicer_MAIN_PROJECT})
-  set(SlicerApp_APPLICATION_NAME ${Slicer_MAIN_PROJECT_APPLICATION_NAME})
+if(${PROJECT_NAME} STREQUAL ${SRPlan_MAIN_PROJECT})
+  set(SRPlanApp_APPLICATION_NAME ${SRPlan_MAIN_PROJECT_APPLICATION_NAME})
 endif()
 
 # --------------------------------------------------------------------------
 # Folder
 # --------------------------------------------------------------------------
-set(${PROJECT_NAME}_FOLDER "App-${SlicerApp_APPLICATION_NAME}")
+set(${PROJECT_NAME}_FOLDER "App-${SRPlanApp_APPLICATION_NAME}")
 
 # --------------------------------------------------------------------------
 # Application library
@@ -61,16 +61,16 @@ set(APPLIB_UI_SRCS
   )
 
 set(APPLIB_RESOURCES
-  Resources/SlicerApp.qrc
-  ${qSlicerBaseQTGUI_SOURCE_DIR}/Resources/qSlicerBaseQTGUI.qrc
+  Resources/SRPlanApp.qrc
+  ${qSRPlanBaseQTGUI_SOURCE_DIR}/Resources/qSlicerBaseQTGUI.qrc
   )
 
-slicerMacroBuildAppLibrary(
+SRPlanMacroBuildAppLibrary(
   NAME ${APPLIB_NAME}
-  APPLICATION_NAME ${SlicerApp_APPLICATION_NAME}
+  APPLICATION_NAME ${SRPlanApp_APPLICATION_NAME}
   DESCRIPTION_SUMMARY ${APPLIB_DESCRIPTION_SUMMARY}
-  DESCRIPTION_FILE ${Slicer_SOURCE_DIR}/README.txt
-  EXPORT_DIRECTIVE "Q_SLICER_APP_EXPORT"
+  DESCRIPTION_FILE ${SRPlan_SOURCE_DIR}/README.txt
+  EXPORT_DIRECTIVE "Q_SRPlan_APP_EXPORT"
   FOLDER ${${PROJECT_NAME}_FOLDER}
   SRCS ${APPLIB_SRCS}
   MOC_SRCS ${APPLIB_MOC_SRCS}
@@ -84,7 +84,7 @@ slicerMacroBuildAppLibrary(
 
 # Configure launcher only for the main application
 set(extra_args)
-if(${PROJECT_NAME} STREQUAL ${Slicer_MAIN_PROJECT})
+if(${PROJECT_NAME} STREQUAL ${SRPlan_MAIN_PROJECT})
   set(extra_args CONFIGURE_LAUNCHER)
 endif()
 
@@ -92,7 +92,7 @@ set(APP_SRCS
   Main.cxx
   )
 
-slicerMacroBuildApplication(
+SRPlanMacroBuildApplication(
   NAME ${PROJECT_NAME}
   APPLICATION_NAME ${${PROJECT_NAME}_APPLICATION_NAME}
   FOLDER ${${PROJECT_NAME}_FOLDER}

@@ -34,10 +34,10 @@
 #include <QTranslator>
 
 // For:
-//  - Slicer_QTLOADABLEMODULES_LIB_DIR
+//  - SRPlan_QTLOADABLEMODULES_LIB_DIR
 //  - Slicer_CLIMODULES_BIN_DIR
 //  - Slicer_LIB_DIR
-//  - Slicer_SHARE_DIR
+//  - SRPlan_SHARE_DIR
 //  - Slicer_USE_PYTHONQT
 //  - Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
 //  - Slicer_BUILD_WIN32_CONSOLE
@@ -96,7 +96,7 @@
 #include <vtksys/SystemTools.hxx>
 
 // Slicer includes
-#include "vtkSRPlanVersionConfigure.h" // For Slicer_VERSION_{MINOR, MAJOR}, Slicer_VERSION_FULL
+#include "vtkSRPlanVersionConfigure.h" // For SRPlan_VERSION_{MINOR, MAJOR}, SRPlan_VERSION_FULL
 
 #ifdef SRPlan_BUILD_DICOM_SUPPORT
 // XXX Avoid  warning: "HAVE_XXXX" redefined
@@ -221,14 +221,14 @@ void qSlicerCoreApplicationPrivate::init()
     {
     this->setEnvironmentVariable(
           "SSL_CERT_FILE",
-          this->SlicerHome + "/" Slicer_SHARE_DIR "/Slicer.crt");
+          this->SlicerHome + "/" SRPlan_SHARE_DIR "/Slicer.crt");
     }
 # endif
 #endif
 
-  // Add 'SLICER_SHARE_DIR' to the environment so that Tcl scripts can reference
+  // Add 'SRPlan_SHARE_DIR' to the environment so that Tcl scripts can reference
   // their dependencies.
-  this->setEnvironmentVariable("SLICER_SHARE_DIR", SRPlan_SHARE_DIR);
+  this->setEnvironmentVariable("SRPlan_SHARE_DIR", SRPlan_SHARE_DIR);
 
   this->ITKFactoriesDir = this->discoverITKFactoriesDirectory();
   this->setEnvironmentVariable("ITK_AUTOLOAD_PATH", this->ITKFactoriesDir);
@@ -1646,7 +1646,7 @@ bool qSlicerCoreApplication::loadCaCertificates(const QString& slicerHome)
     {
     QSslSocket::setDefaultCaCertificates(
           QSslCertificate::fromPath(
-            slicerHome + "/" Slicer_SHARE_DIR "/Slicer.crt"));
+            slicerHome + "/" SRPlan_SHARE_DIR "/Slicer.crt"));
     }
   return !QSslSocket::defaultCaCertificates().empty();
 #else
