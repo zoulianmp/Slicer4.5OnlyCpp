@@ -304,7 +304,7 @@ bool qSlicerCoreCommandOptions::disableMessageHandlers() const
 bool qSlicerCoreCommandOptions::disableTerminalOutputs()const
 {
   Q_D(const qSlicerCoreCommandOptions);
-#if defined (Q_OS_WIN32) && !defined (Slicer_BUILD_WIN32_CONSOLE)
+#if defined (Q_OS_WIN32) && !defined (SRPlan_BUILD_WIN32_CONSOLE)
   return true;
 #else
   return d->ParsedArgs.value("disable-terminal-outputs").toBool();
@@ -423,7 +423,7 @@ void qSlicerCoreCommandOptions::addArguments()
   this->addArgument("disable-message-handlers", "", QVariant::Bool,
                     "Start application disabling the 'terminal' message handlers.");
 
-#if defined (Q_OS_WIN32) && !defined (Slicer_BUILD_WIN32_CONSOLE)
+#if defined (Q_OS_WIN32) && !defined (SRPlan_BUILD_WIN32_CONSOLE)
 #else
   this->addArgument("disable-terminal-outputs", "", QVariant::Bool,
                     "Start application disabling stdout/stderr outputs and capturing outputs only using the error log.");

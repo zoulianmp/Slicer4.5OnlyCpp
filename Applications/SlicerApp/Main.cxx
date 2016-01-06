@@ -59,7 +59,7 @@
 //#include <vtkObject.h>
 #include <vtksys/SystemTools.hxx>
 
-#if defined (_WIN32) && !defined (Slicer_BUILD_WIN32_CONSOLE)
+#if defined (_WIN32) && !defined (SRPlan_BUILD_WIN32_CONSOLE)
 # include <windows.h>
 # include <vtksys/Encoding.hxx>
 #endif
@@ -222,7 +222,7 @@ int SlicerAppMain(int argc, char* argv[])
 
 } // end of anonymous namespace
 
-#if defined (_WIN32) && !defined (Slicer_BUILD_WIN32_CONSOLE)
+#if defined (_WIN32) && !defined (SRPlan_BUILD_WIN32_CONSOLE)
 int __stdcall WinMain(HINSTANCE hInstance,
                       HINSTANCE hPrevInstance,
                       LPSTR lpCmdLine, int nShowCmd)

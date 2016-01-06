@@ -25,7 +25,7 @@
 #include <ctkCommandLineParser.h>
 
 #include "qSRplanBaseQTCoreExport.h"
-#include "vtkSRPlanConfigure.h" // For Slicer_USE_PYTHONQT, Slicer_BUILD_WIN32_CONSOLE
+#include "vtkSRPlanConfigure.h" // For Slicer_USE_PYTHONQT, SRPlan_BUILD_WIN32_CONSOLE
 
 class QSettings;
 class qSlicerCoreCommandOptionsPrivate;

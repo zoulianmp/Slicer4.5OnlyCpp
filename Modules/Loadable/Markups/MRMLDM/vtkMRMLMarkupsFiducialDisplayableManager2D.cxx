@@ -670,7 +670,7 @@ void vtkMRMLMarkupsFiducialDisplayableManager2D::SetNthSeed(int n, vtkMRMLMarkup
       {
       handleRep->VisibilityOn();
       handleRep->HandleVisibilityOn();
-      handleRep->EnablePicking();
+      handleRep->PickableOn();
       if (textString.compare("") != 0)
         {
         handleRep->LabelVisibilityOn();
@@ -688,7 +688,7 @@ void vtkMRMLMarkupsFiducialDisplayableManager2D::SetNthSeed(int n, vtkMRMLMarkup
       handleRep->VisibilityOff();
       handleRep->HandleVisibilityOff();
       handleRep->LabelVisibilityOff();
-      handleRep->DisablePicking();
+      handleRep->PickableOff();
       vtkSeedRepresentation *seedRepresentation = vtkSeedRepresentation::SafeDownCast(seedWidget->GetRepresentation());
       if (seedRepresentation)
         {
@@ -697,7 +697,7 @@ void vtkMRMLMarkupsFiducialDisplayableManager2D::SetNthSeed(int n, vtkMRMLMarkup
             seedRepresentation->GetHandleRepresentation());
         if (orientedHandleRep)
           {
-          orientedHandleRep->DisablePicking();
+          orientedHandleRep->PickableOff();
           }
         }
 
@@ -1023,7 +1023,7 @@ void vtkMRMLMarkupsFiducialDisplayableManager2D::PropagateMRMLToWidget(vtkMRMLMa
     {
     if (handleRep)
       {
-      handleRep->DisablePicking();
+      handleRep->PickableOff();
       }
     int seed = 0;
     vtkHandleWidget *handleWidget;
@@ -1036,7 +1036,7 @@ void vtkMRMLMarkupsFiducialDisplayableManager2D::PropagateMRMLToWidget(vtkMRMLMa
           vtkOrientedPolygonalHandleRepresentation3D::SafeDownCast(handleRepresentation);
         if (orientedHandleRep)
           {
-          orientedHandleRep->DisablePicking();
+          orientedHandleRep->PickableOff();
           }
         }
       seed++;
@@ -1046,7 +1046,7 @@ void vtkMRMLMarkupsFiducialDisplayableManager2D::PropagateMRMLToWidget(vtkMRMLMa
     {
     if (handleRep)
       {
-      handleRep->EnablePicking();
+      handleRep->PickableOn();
       }
     }
 

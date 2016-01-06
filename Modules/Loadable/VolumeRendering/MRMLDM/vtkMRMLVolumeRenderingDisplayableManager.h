@@ -22,7 +22,7 @@
 #define __vtkMRMLVolumeRenderingDisplayableManager_h
 
 // VolumeRendering includes
-#include "vtkSlicerVolumeRenderingModuleMRMLDisplayableManagerExport.h"
+#include "vtkSRPlanVolumeRenderingModuleMRMLDisplayableManagerExport.h"
 class vtkGPUVolumeRayCastMapper;
 class vtkFixedPointVolumeRayCastMapper;
 class vtkMRMLCPURayCastVolumeRenderingDisplayNode;
@@ -48,7 +48,7 @@ class vtkVolumeProperty;
 #define VTKIS_VOLUME_PROPS 100
 
 /// \ingroup Slicer_QtModules_VolumeRendering
-class VTK_SLICER_VOLUMERENDERING_MODULE_MRMLDISPLAYABLEMANAGER_EXPORT vtkMRMLVolumeRenderingDisplayableManager
+class VTK_SRPlan_VOLUMERENDERING_MODULE_MRMLDISPLAYABLEMANAGER_EXPORT vtkMRMLVolumeRenderingDisplayableManager
   : public vtkMRMLAbstractThreeDViewDisplayableManager
 {
 public:

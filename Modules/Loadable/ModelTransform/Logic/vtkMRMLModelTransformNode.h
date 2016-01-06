@@ -14,9 +14,9 @@
 #include <string>
 #include <vector>
 
-#include "vtkSlicerModelTransformModuleLogicExport.h"
+#include "vtkSRPlanModelTransformModuleLogicExport.h"
 
-class VTK_SLICER_MODELTRANSFORM_MODULE_LOGIC_EXPORT vtkMRMLModelTransformNode : public vtkMRMLNode
+class VTK_SRPlan_MODELTRANSFORM_MODULE_LOGIC_EXPORT vtkMRMLModelTransformNode : public vtkMRMLNode
 {
   public:
   static vtkMRMLModelTransformNode *New();

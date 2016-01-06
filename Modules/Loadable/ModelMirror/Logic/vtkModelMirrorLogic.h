@@ -24,13 +24,13 @@
 #include <map>
 #include <iterator>
 
-#include "vtkSlicerModelMirrorModuleLogicExport.h"
+#include "vtkSRPlanModelMirrorModuleLogicExport.h"
 
 // TODO Node registration needs to be done in the Logic. See RegisterNodes
 
 class vtkIntArray;
 
-class VTK_SLICER_MODELMIRROR_MODULE_LOGIC_EXPORT vtkModelMirrorLogic : public vtkSlicerModuleLogic
+class VTK_SRPlan_MODELMIRROR_MODULE_LOGIC_EXPORT vtkModelMirrorLogic : public vtkSlicerModuleLogic
 {
   public:
   static vtkModelMirrorLogic *New();

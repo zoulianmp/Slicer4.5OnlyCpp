@@ -24,7 +24,7 @@
 #include <QDesignerCustomWidgetInterface>
 #include "qSRPlanUnitsModuleWidgetsPluginsExport.h"
 
-class Q_SLICER_MODULE_UNITS_WIDGETS_PLUGINS_EXPORT qSlicerUnitsModuleWidgetsAbstractPlugin
+class Q_SRPlan_MODULE_UNITS_WIDGETS_PLUGINS_EXPORT qSlicerUnitsModuleWidgetsAbstractPlugin
   : public QDesignerCustomWidgetInterface
 {
   Q_INTERFACES(QDesignerCustomWidgetInterface);

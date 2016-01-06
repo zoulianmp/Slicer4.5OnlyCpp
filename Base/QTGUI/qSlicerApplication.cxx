@@ -193,7 +193,7 @@ void qSlicerApplicationPrivate::init()
   this->ErrorLogModel->setTerminalOutputs(
         this->CoreCommandOptions->disableTerminalOutputs() ?
           ctkErrorLogTerminalOutput::None : ctkErrorLogTerminalOutput::All);
-#if defined (Q_OS_WIN32) && !defined (Slicer_BUILD_WIN32_CONSOLE)
+#if defined (Q_OS_WIN32) && !defined (SRPlan_BUILD_WIN32_CONSOLE)
   // Must not register ctkErrorLogFDMessageHandler when building a window-based
   // (non-console) application because this handler would not
   // let the application to quit when the last window is closed.

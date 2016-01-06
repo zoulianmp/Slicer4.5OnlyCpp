@@ -23,7 +23,7 @@
 
 #include "qSlicerUnitsModuleWidgetsAbstractPlugin.h"
 
-class Q_SLICER_MODULE_UNITS_WIDGETS_PLUGINS_EXPORT qMRMLUnitWidgetPlugin
+class Q_SRPlan_MODULE_UNITS_WIDGETS_PLUGINS_EXPORT qMRMLUnitWidgetPlugin
   : public QObject, public qSlicerUnitsModuleWidgetsAbstractPlugin
 {
   Q_OBJECT

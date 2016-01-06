@@ -40,7 +40,7 @@
 //  - SRPlan_SHARE_DIR
 //  - Slicer_USE_PYTHONQT
 //  - Slicer_BUILD_EXTENSIONMANAGER_SUPPORT
-//  - Slicer_BUILD_WIN32_CONSOLE
+//  - SRPlan_BUILD_WIN32_CONSOLE
 //  - Slicer_BUILD_CLI_SUPPORT
 //  - Slicer_BUILD_I18N_SUPPORT
 //  - Slicer_ORGANIZATION_DOMAIN
@@ -1452,7 +1452,7 @@ void qSlicerCoreApplication::restart()
   bool launcherAvailable = QFile::exists(coreApp->launcherExecutableFilePath());
   QStringList arguments = coreApp->arguments();
   arguments.removeFirst(); // Remove program name
-#if defined (Q_OS_WIN32) && !defined (Slicer_BUILD_WIN32_CONSOLE)
+#if defined (Q_OS_WIN32) && !defined (SRPlan_BUILD_WIN32_CONSOLE)
 #else
   arguments.prepend("--disable-terminal-outputs");
 #endif

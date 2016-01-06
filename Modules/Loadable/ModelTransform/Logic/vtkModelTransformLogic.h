@@ -24,11 +24,11 @@
 #include <map>
 #include <iterator>
 
-#include "vtkSlicerModelTransformModuleLogicExport.h"
+#include "vtkSRPlanModelTransformModuleLogicExport.h"
 
 // TODO Node registration needs to be done in the Logic. See RegisterNodes
 
-class VTK_SLICER_MODELTRANSFORM_MODULE_LOGIC_EXPORT vtkModelTransformLogic : public vtkSlicerModuleLogic
+class VTK_SRPlan_MODELTRANSFORM_MODULE_LOGIC_EXPORT vtkModelTransformLogic : public vtkSlicerModuleLogic
 {
 public:
   static vtkModelTransformLogic *New();

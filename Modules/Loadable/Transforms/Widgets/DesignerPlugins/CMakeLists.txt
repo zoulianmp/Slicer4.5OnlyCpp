@@ -23,7 +23,7 @@ set(${KIT}_MOC_SRCS
   )
 
 set(${KIT}_TARGET_LIBRARIES
-  qSlicer${MODULE_NAME}ModuleWidgets
+  qSRPlan${MODULE_NAME}ModuleWidgets
   )
 
 #-----------------------------------------------------------------------------

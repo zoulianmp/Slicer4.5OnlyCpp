@@ -28,7 +28,7 @@
 #include "qMRMLUnitWidgetPlugin.h"
 
 // \class Group the plugins in one library
-class Q_SLICER_MODULE_UNITS_WIDGETS_PLUGINS_EXPORT qSlicerUnitsModuleWidgetsPlugin
+class Q_SRPlan_MODULE_UNITS_WIDGETS_PLUGINS_EXPORT qSlicerUnitsModuleWidgetsPlugin
   : public QObject
   , public QDesignerCustomWidgetCollectionInterface
 {

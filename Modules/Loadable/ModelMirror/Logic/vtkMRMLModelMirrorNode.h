@@ -13,9 +13,9 @@
 #include <string>
 #include <vector>
 
-#include "vtkSlicerModelMirrorModuleLogicExport.h"
+#include "vtkSRPlanModelMirrorModuleLogicExport.h"
 
-class VTK_SLICER_MODELMIRROR_MODULE_LOGIC_EXPORT vtkMRMLModelMirrorNode : public vtkMRMLNode
+class VTK_SRPlan_MODELMIRROR_MODULE_LOGIC_EXPORT vtkMRMLModelMirrorNode : public vtkMRMLNode
 {
   public:
   static vtkMRMLModelMirrorNode *New();
